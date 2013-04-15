@@ -1,4 +1,7 @@
 Kecamatan::Application.routes.draw do
+
+  get "dashboards/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -25,6 +28,10 @@ Kecamatan::Application.routes.draw do
   #     end
   #   end
 
+  ## routing user ##
+  resources :users
+  resources :sessions
+
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
@@ -45,6 +52,12 @@ Kecamatan::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  ## routing admin ##
+  namespace :admin do
+    resources :users
+    resources :dashboards, :only => [:index]
+  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

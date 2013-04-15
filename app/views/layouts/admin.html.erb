@@ -21,12 +21,14 @@
   </head>
   <body>
     <div id="loader"><img src="/assets/loader.gif"/></div>
-    <%= render "shared/flash_message" %>
-    <% if current_user %>
-      <%= yield %>
-    <% else %>
-      <%= render '/shared/login' %>
-    <% end %>
+    <div class="wrapper">
+      <%= render 'shared/sidebar' %>
+      <div class="body">
+        <%= render "shared/flash_message" %>
+        <%= render 'shared/navigation' %>
+        <%= yield %>
+      </div>
+    </div>
     <div class="dialog" id="source" style="display: none;" title="Source"></div>
     <%= javascript_include_tag "application" %>
   </body>

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_protected :email, :password, :password_confirmation
   attr_accessor :password
   before_save :encrypt_password
-  attr_accessible :email, :password , :password_confirmation
+  attr_accessible :email, :password , :password_confirmation, :first_name, :last_name
   validates :password, presence: {on: :create}, confirmation: true
   validates :email, presence: { message: Flash.required_presence},
     uniqueness: { message: Flash.required_uniqueness}

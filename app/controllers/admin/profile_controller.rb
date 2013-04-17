@@ -22,13 +22,13 @@ class Admin::ProfileController < ApplicationController
 
   def save_password
     if User.authenticate(current_user.email, params[:user][:old_password])
-      if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
-        current_user.password_confirmation = params[:password_confirmation]
-        current_user.password = params[:password]
+      if ((params[:user][:password] == params[:user][:password_confirmation]) && !params[:user][:password_confirmation].blank?)
+        current_user.password_confirmation = params[:user][:password_confirmation]
+        current_user.password = params[:user][:password]
 
         if current_user.save!
           flash[:notice] = "Password successfully updated"
-          redirect_to admin_profile_index_path_path
+          redirect_to admin_profile_index_path
         else
           flash[:alert] = "Password not changed"
           render :edit_password

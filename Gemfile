@@ -6,14 +6,14 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.7'
 end
 
 group :production do
   gem 'pg', '0.15.1'
 end
 
-gem 'unicorn'
+gem 'unicorn', '4.6.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,11 +27,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '2.2.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem "bcrypt-ruby", :require => "bcrypt"
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -44,3 +44,6 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # To use debugger
 # gem 'debugger'
+
+# gem on development period
+# gem 'carrierwave'

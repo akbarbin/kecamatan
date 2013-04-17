@@ -57,6 +57,13 @@ Kecamatan::Application.routes.draw do
   namespace :admin do
     resources :users
     resources :dashboards, :only => [:index]
+    resources :profile, :only => [:index] do
+      collection do
+        put :modify
+        get :edit_password
+        put :save_password
+      end
+    end
   end
 
   # You can have the root of your site routed with "root"

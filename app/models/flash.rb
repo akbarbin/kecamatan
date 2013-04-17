@@ -33,6 +33,18 @@ class Flash
     "berhasil sign out."
   end
 
+  # failed
+  def self.failed_created
+    "gagal dibuat."
+  end
+
+  def self.failed_updated
+    "gagal diubah."
+  end
+
+  def self.failed_deleted
+    "gagal dihapus."
+  end
   # invalid
   def self.invalid_email_and_password
     "Invalid email or password."

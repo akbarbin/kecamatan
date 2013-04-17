@@ -40,21 +40,21 @@
     </ul>
   </li>
   <li>
-    <a href="#" class="button red">
+    <%= link_to edit_password_admin_profile_index_path, :class => "button red" do %>
       <div class="icon">
         <span class="ico-chart-4"></span>
       </div>
       <div class="name">Ganti Password</div>
-    </a>
+    <% end %>
   </li>
   <li>
-    <a href="#" class="button dblue">
+    <%= link_to admin_profile_index_path, :class => "button dblue" do %>
       <div class="arrow"></div>
       <div class="icon">
         <span class="ico-layout-7"></span>
       </div>
-      <div class="name">Tables</div>
-    </a>
+      <div class="name">Edit Kontak</div>
+    <% end %>
     <ul class="sub">
       <li><a href="#">Simple</a></li>
       <li><a href="#">Dynamic</a></li>
@@ -66,7 +66,7 @@
       <div class="icon">
         <span class="ico-box"></span>
       </div>
-      <div class="name">Samples</div>
+      <div class="name">Keterisian Data</div>
     </a>
     <ul class="sub">
       <li><a href="#">FAQ</a></li>

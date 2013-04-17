@@ -17,7 +17,7 @@ http://pixelmatrixdesign.com/uniform/themer.html
 
 div.checker span,
 div.radio span{
-  background-image: url(../../img/uniform/sprite.png);
+  background-image: url(/assets/uniform/sprite.png);
   background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
 }

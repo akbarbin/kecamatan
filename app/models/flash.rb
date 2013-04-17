@@ -45,8 +45,13 @@ class Flash
   def self.failed_deleted
     "gagal dihapus."
   end
+
   # invalid
   def self.invalid_email_and_password
     "Invalid email or password."
+  end
+
+  def self.not_permited_to_access_page
+    "You are not permitted, please login first"
   end
 end

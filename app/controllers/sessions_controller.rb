@@ -6,10 +6,14 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to admin_dashboards_path, notice: Flash.successfully_signed_in
+      if user.admin?
+        redirect_to admin_dashboards_path, notice: Flash.successfully_signed_in
+      else
+        redirect_to dashboards_index_path, notice: Flash.successfully_signed_in
+      end
     else
-      flash.now.alert = Flash.invalid_email_and_password
-      render "new"
+      flash.now[:error] = Flash.invalid_email_and_password
+      render :new
     end
   end
 

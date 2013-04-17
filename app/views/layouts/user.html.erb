@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en"><!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+    <title>SIPD</title>
+    <link rel="icon" type="image/ico" href="/assets/favicon.ico"/>
+
+    <!--[if lte IE 7]>
+        <link href="css/ie.css" rel="stylesheet" type="text/css" />
+        <script type='text/javascript' src='/assets/plugins/other/lte-ie7.js'></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="loader"><img src="/assets/loader.gif"/></div>
+    <div class="wrapper">
+      <%= render 'shared/sidebar' %>
+      <div class="body">
+        <%= render "shared/flash_message" %>
+        <%= render 'shared/navigation' %>
+        <%= yield %>
+      </div>
+    </div>
+    <div class="dialog" id="source" style="display: none;" title="Source"></div>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

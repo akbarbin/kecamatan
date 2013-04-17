@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
 
   def require_login
     if current_user.nil?
-      flash[:error] = "You are not permitted, please login first"
-      redirect_to sessions_path
+      flash[:error] = Flash.not_permited_to_access_page
+      redirect_to root_path
     else
       return current_user
     end

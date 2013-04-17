@@ -1,7 +1,4 @@
 Kecamatan::Application.routes.draw do
-
-  get "dashboards/index"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -29,6 +26,7 @@ Kecamatan::Application.routes.draw do
   #   end
 
   ## routing user ##
+  get "dashboards/index"
   resources :users
   resources :sessions
 

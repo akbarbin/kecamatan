@@ -5,7 +5,7 @@
         <h2>Edit Profile</h2>
       </div>
       <div class="data-fluid">
-        <%= form_for @user, :url => modify_admin_profile_index_path do |f| %>
+        <%= form_for @user, :url => modify_admin_profile_index_path, :html => {:multipart => true} do |f| %>
           <div class="row-form">
             <div class="span3"><%= f.label :nama_depan %></div>
             <div class="span9"><%= f.text_field :first_name, :placeholder => "Isilah nama depan Anda" %></div>
@@ -33,11 +33,8 @@
           <div class="row-form">
             <div class="span3"><%= f.label :image %></div>
             <div class="span9">
-              <div class="input-append file">
-                <input type="file" name="file"/>
-                <input type="text"/>
-                <button class="btn">Browse</button>
-              </div>
+              <%= f.file_field :image_user %>
+              <%= f.hidden_field :image_user_cache %>
             </div>
           </div>
           <div class="row-form">
@@ -53,7 +50,7 @@
         <h2>Foto Anda</h2>
       </div>
       <div class="data-fluid">
-        <img src="/assets/examples/photo/example_1s.jpg" heigth="300" width="300" />
+        <%= image_tag(@user.image_user_url(:thumb)) if @user.image_user? %>
       </div>
     </div>
   </div>

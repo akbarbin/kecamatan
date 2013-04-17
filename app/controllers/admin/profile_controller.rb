@@ -1,4 +1,5 @@
 class Admin::ProfileController < ApplicationController
+  before_filter :require_login
   before_filter :find_user
   layout "admin"
 

@@ -31,7 +31,7 @@ gem 'jquery-rails', '2.2.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-gem "bcrypt-ruby", :require => "bcrypt"
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -46,4 +46,5 @@ gem "bcrypt-ruby", :require => "bcrypt"
 # gem 'debugger'
 
 # gem on development period
-# gem 'carrierwave'
+gem 'carrierwave', '0.8.0'
+gem 'mini_magick', '3.5.0'

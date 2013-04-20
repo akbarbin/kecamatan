@@ -11,13 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417161815) do
+ActiveRecord::Schema.define(:version => 20130418152305) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "tabular_data", :force => true do |t|
+    t.string   "name"
+    t.string   "roman_number"
+    t.string   "parent_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "tabular_data", ["parent_id"], :name => "index_tabular_data_on_parent_id"
+
+  create_table "tabulars", :force => true do |t|
+    t.string   "name"
+    t.string   "roman_number"
+    t.integer  "parent_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "tabulars", ["parent_id"], :name => "index_tabulars_on_parent_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

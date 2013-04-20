@@ -1,0 +1,36 @@
+<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
+<%= error_messages_for @brand %>
+<%= form_for @brand, :url => url do |f| %>
+  <p>
+    <%= f.label :company %><br />
+    <%= f.select :company_id, Company.options %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :contact_us_email %><br />
+    <%= f.text_field :contact_us_email %>
+  </p>
+  <p>
+    <label>
+      <%= f.check_box :remove_assets %>
+      Remove assets
+    </label>
+  </p>
+  <p>
+    <label>Brand assets</label>
+    <br />
+    <%= f.file_field :assets %>
+    <%= f.hidden_field :assets_cache %>
+  </p>
+  <p>
+    <%= f.label :template %><br />
+    <%= cktext_area_tag ("template") %>
+  </p><br/>
+  <p>
+    <%= f.submit "Submit" %>
+    <%= link_to "Back to List", admin_brands_path, :class => 'button' %>
+  </p>
+<% end %>

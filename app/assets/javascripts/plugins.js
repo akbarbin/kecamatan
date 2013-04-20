@@ -424,6 +424,8 @@ $(document).ready(function(){
       "iDisplayLength": 5,
       "aLengthMenu": [5,10,25,50,100], // can be removed for basic 10 items per page
       "sPaginationType": "full_numbers",
+      "bInfo": false,
+      "bLengthChange": false,
       "aoColumnDefs": [{
         "bSortable": false,
         "aTargets": [ -1 , 0]
@@ -651,14 +653,11 @@ $(window).load(function(){
   if($(".scroll").length > 0)
     $(".scroll").mCustomScrollbar();
 // eof custom scrollbar    
-    
 });
 
 $('.wrapper').resize(function(){
-
   if($("#wysiwyg").length > 0) editor.refresh();
   if($("#mail_wysiwyg").length > 0) m_editor.refresh();
-    
 });
 
 

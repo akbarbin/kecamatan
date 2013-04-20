@@ -62,6 +62,7 @@ Kecamatan::Application.routes.draw do
         put :save_password
       end
     end
+    resources :tabulars
   end
 
   # You can have the root of your site routed with "root"

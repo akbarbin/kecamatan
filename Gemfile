@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 group :development do
   gem 'sqlite3', '1.3.7'
+  gem 'annotate', ">=2.5.0"
+  gem 'rails_best_practices'
 end
 
 group :production do

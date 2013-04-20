@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!--[if gt IE 8]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <![endif]-->
+    <title>Dynamic Tables - Aries Premium Admin Template</title>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <link rel="icon" type="image/ico" href="favicon.ico"/>
+    <link href="/assets/stylesheets.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 7]>
+        <link href="css/ie.css" rel="stylesheet" type="text/css" />
+        <script type='text/javascript' src='/assets/plugins/other/lte-ie7.js'></script>
+    <![endif]-->
+    <script type='text/javascript' src='/assets/plugins/datatables/jquery.dataTables.min.js'></script>
+    <script type='text/javascript' src='/assets/plugins.js'></script>
+    <script type='text/javascript' src='/assets/charts.js'></script>
+    <script type='text/javascript' src='/assets/actions.js'></script>
+  </head>
+  <body>
+    <div id="loader"><img src="/assets/loader.gif"/></div>
+    <div class="wrapper">
+      <%= render 'shared/sidebar' %>
+      <div class="body">
+        <%= render "shared/flash_message" %>
+        <%= render 'shared/navigation' %>
+        <%= yield  %>
+      </div>
+    </div>
+    <div class="dialog" id="source" style="display: none;" title="Source"></div>
+  </body>
+</html>

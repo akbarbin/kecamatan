@@ -1,36 +1,38 @@
-<%= javascript_include_tag "/javascripts/ckeditor/ckeditor.js" %>
-<%= error_messages_for @brand %>
-<%= form_for @brand, :url => url do |f| %>
-  <p>
-    <%= f.label :company %><br />
-    <%= f.select :company_id, Company.options %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :contact_us_email %><br />
-    <%= f.text_field :contact_us_email %>
-  </p>
-  <p>
-    <label>
-      <%= f.check_box :remove_assets %>
-      Remove assets
-    </label>
-  </p>
-  <p>
-    <label>Brand assets</label>
-    <br />
-    <%= f.file_field :assets %>
-    <%= f.hidden_field :assets_cache %>
-  </p>
-  <p>
-    <%= f.label :template %><br />
-    <%= cktext_area_tag ("template") %>
-  </p><br/>
-  <p>
-    <%= f.submit "Submit" %>
-    <%= link_to "Back to List", admin_brands_path, :class => 'button' %>
-  </p>
-<% end %>
+<div id="support-data" style="width:500px;height:auto;">
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="block">
+        <div class="head">
+          <h2><%= title %></h2>
+        </div>
+        <div class="data-fluid">
+          <%= form_for tabular, :url => url, :remote => true do |f| %>
+            <div class="row-form">
+              <div class="span3"><%= f.label :name %></div>
+              <div class="span9"><%= f.text_field :name, :placeholder => "Isilah data nama tabular" %></div>
+              <div class="span9"><%= display_error(tabular, :name) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.label :unit %></div>
+              <div class="span9"><%= select(:tabular, :unit_id, option_tabulars) %></div>
+              <div class="span9"><%= display_error(tabular, :unit_id) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.label :nilai %></div>
+              <div class="span9"><%= f.text_field :total, :placeholder => "Isilah data nilai tabular" %></div>
+              <div class="span9"><%= display_error(tabular, :total) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.label :data_sources %></div>
+              <div class="span9"><%= select(:tabular, :data_source_id, options_data_sources) %></div>
+              <div class="span9"><%= display_error(tabular, :data_source_id) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.submit name_button, :class => "btn" %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

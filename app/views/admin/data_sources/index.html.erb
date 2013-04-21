@@ -1,0 +1,84 @@
+<div class="content">
+  <div class="page-header">
+    <div class="icon">
+      <span class="ico-layout-7"></span>
+    </div>
+    <h1>Kelompok Data <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
+  </div>
+  <%= form_tag admin_data_sources_path, :method => 'get' do %>
+    <%= text_field_tag "data_source[search]" %>
+    <%= label_tag :pilih_kecamatan %>
+    <%= select("data_source", :user_id, @user_options) %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="span3">
+        <a id="add-data" href="/admin/data_sources/new" class="btn btn-large btn-block btn-warning" type="button">Tambah data tabular</a>
+        <%= link_to "Import excle", export_admin_data_sources_path, :class => "btn" %>
+      </div>
+      <div class="block">
+        <div class="data-fluid">
+          <table cellpadding="0" cellspacing="0" width="100%" class="table">
+            <thead>
+              <tr>
+                <th width="25%">
+                  No
+                </th>
+                <th width="25%">
+                  Nama Sumber Data
+                </th>
+                <th width="25%">
+                  No Telp
+                </th>
+                <th width="25%">
+                  Alamat
+                </th>
+                <th width="25%">
+                  Kecamatan
+                </th>
+                <th width="25%">
+                  Default
+                </th>
+                <th width="25%">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @data_sources.each_with_index do |data_source, idx| %>
+                <tr>
+                  <td>
+                    <%= idx + 1 %>
+                  </td>
+                  <td>
+                    <%= link_to data_source.name, admin_data_source_path(data_source) %>
+                  </td>
+                  <td>
+                    <%= data_source.telephone rescue "-" %>
+                  </td>
+                  <td>
+                    <%= data_source.address rescue "-" %>
+                  </td>
+                  <td>
+                    <%= data_source.user_name rescue "-" %>
+                  </td>
+                  <td>
+                    <% unless data_source.default? %>
+                      <%= link_to "Set Default", set_default_admin_data_source_path(data_source), :method => :put, :class => "label label-success" %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to "Edit", edit_admin_data_source_path(data_source), :class => "edit-data", :id => data_source.id %>
+                    <%= link_to "Delete", admin_data_source_path(data_source), :method => :delete, :confirm => "Are you sure to delete this?" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= will_paginate(@data_sources) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

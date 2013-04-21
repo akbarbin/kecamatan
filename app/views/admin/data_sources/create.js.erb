@@ -1,0 +1,16 @@
+$(document).ready(function(){
+  $.ajax({
+    beforeSend:function(respond){
+    },
+    complete:function(respond){
+      <%- if @data_source.errors.any? %>
+        $('#support-data-source').html('<%= escape_javascript(
+          render('/admin/data_sources/form', :url => admin_data_sources_path,
+            :data_source => @data_source, :title => "Tambah Sumber Data",
+            :name_button => "Simpan")) %>');
+      <% else %>
+        parent.$.fancybox.close();
+      <% end %>
+    }
+  });
+});

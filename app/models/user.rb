@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
   #--
   # attribute
   attr_protected :password, :password_confirmation, :email
-  attr_accessible :email, :password , :password_confirmation, :first_name,
-    :last_name, :telephone, :fax, :website, :old_password, :address, :role_id,
-    :image_user_cache, :image_user
+  attr_accessible :email, :password, :password_confirmation, :name, :telephone,
+    :fax, :website, :old_password, :address, :role_id, :image_user_cache,
+    :image_user
   attr_accessor :password, :old_password, :image_user_cache
   #++
 
@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
 
   #--
   # has_many
+  has_many :histories
+  has_many :data_sources
   #++
 
   #--
@@ -73,6 +75,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
+  # to check authentication user
   def self.authenticate(email, password)
     user = find_by_email(email)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
@@ -80,6 +84,12 @@ class User < ActiveRecord::Base
     else
       nil
     end
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
+  # to get option select user
+  def self.options_select
+    all.map{|c|[c.name, c.id]}.unshift([PROMPT_OPTION, nil])
   end
   #++
 
@@ -92,6 +102,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
+  # to get return true role
+  # for example: admin?
   Role::ROLES.each do |role|
     define_method "#{role}?" do
       self.role.name == role

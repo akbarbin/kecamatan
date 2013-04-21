@@ -5,184 +5,76 @@
     </div>
     <h1>Kelompok Data <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
   </div>
+  <%= form_tag admin_tabulars_path, :method => 'get' do %>
+    <%= text_field_tag "tabular[search]" %>
+    <%= label_tag :pilih_kecamatan %>
+    <%= select("tabular", :user_id, @user_options) %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
   <div class="row-fluid">
     <div class="span12">
       <div class="span3">
-        <button class="btn btn-large btn-block btn-warning" type="button">Tambah data tabular</button>
+        <a id="add-data" href="/admin/tabulars/new" class="btn btn-large btn-block btn-warning" type="button">Tambah data tabular</a>
+        <%#= link_to "Import excle", export_admin_tabulars_path, :class => "btn" %>
       </div>
       <div class="block">
-        <div class="head dblue">
-          <div class="icon"><span class="ico-layout-9"></span></div>
-          <h2>NILAI PROFIL TABULAR</h2>
-          <ul class="buttons">
-            <li><a href="#" onClick="source('table_sort_pagination'); return false;"><div class="icon"><span class="ico-info"></span></div></a></li>
-          </ul>
-        </div>
         <div class="data-fluid">
-          <table class="table fpTable lcnp" cellpadding="0" cellspacing="0" width="100%">
+          <table cellpadding="0" cellspacing="0" width="100%" class="table">
             <thead>
               <tr>
-                <th><input type="checkbox" class="checkall"/></th>
-                <th width="20%">Name</th>
-                <th>Product</th>
-                <th width="20%">Status</th>
-                <th width="20%">Date</th>
-                <th width="80" class="TAC">Actions</th>
+                <th>
+                  No
+                </th>
+                <th width="25%">
+                  Nama
+                </th>
+                <th width="25%">
+                  Nilai
+                </th>
+                <th width="25%">
+                  Satuan
+                </th>
+                <th width="25%">
+                  Sumber Data
+                </th>
+                <th width="25%">
+                  Kecamatan
+                </th>
+                <th width="25%">
+                  Action
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="528"/></td>
-                <td><a href="#">Dmitry Ivaniuk</a></td>
-                <td>Product #212</td>
-                <td><span class="label label-important">New</span></td>
-                <td>24/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="527"/></td>
-                <td><a href="#">John Doe</a></td>
-                <td>Product #132</td>
-                <td><span class="label label-important">New</span></td>
-                <td>24/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="526"/></td>
-                <td><a href="#">Alex Fruz</a></td>
-                <td>Product #53</td>
-                <td><span class="label label-important">New</span></td>
-                <td>23/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="525"/></td>
-                <td><a href="#">Olga Yukhimchuk</a></td>
-                <td>Product #874</td>
-                <td><span class="label label-info">Pending</span></td>
-                <td>23/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="524"/></td>
-                <td><a href="#">Angelina Rose</a></td>
-                <td>Product #533</td>
-                <td><span class="label label-info">Pending</span></td>
-                <td>23/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="600"/></td>
-                <td><a href="#">Alexandra Belova</a></td>
-                <td>Product #898</td>
-                <td><span class="label label-success">Delivered</span></td>
-                <td>21/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="601"/></td>
-                <td><a href="#">Ivanov Ivan</a></td>
-                <td>Product #900</td>
-                <td><span class="label label-success">Delivered</span></td>
-                <td>21/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="602"/></td>
-                <td><a href="#">Eugune Noise</a></td>
-                <td>Product #231</td>
-                <td><span class="label label-success">Delivered</span></td>
-                <td>20/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="603"/></td>
-                <td><a href="#">Anatoly Yukhim</a></td>
-                <td>Product #874</td>
-                <td><span class="label label-success">Delivered</span></td>
-                <td>20/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" name="order[]" value="604"/></td>
-                <td><a href="#">Vasily Ivaniuk</a></td>
-                <td>Product #355</td>
-                <td><span class="label label-success">Delivered</span></td>
-                <td>19/11/2012</td>
-                <td>
-                  <a href="#" class="button green">
-                    <div class="icon"><span class="ico-pencil"></span></div>
-                  </a>
-                  <a href="#" class="button red">
-                    <div class="icon"><span class="ico-remove"></span></div>
-                  </a>
-                </td>
-              </tr>
+              <% @tabulars.each_with_index do |tabular, idx| %>
+                <tr>
+                  <td>
+                    <%= idx + 1 %>
+                  </td>
+                  <td>
+                    <%= tabular.name %>
+                  </td>
+                  <td>
+                    <%= tabular.telephone rescue "-" %>
+                  </td>
+                  <td>
+                    <%= tabular.unit_name rescue "-" %>
+                  </td>
+                  <td>
+                    <%= tabular.data_source_name rescue "-" %>
+                  </td>
+                  <td>
+                    <%= tabular.user_name rescue "-" %>
+                  </td>
+                  <td>
+                    <%= link_to "Edit", edit_admin_tabular_path(tabular), :class => "edit-data", :id => tabular.id %>
+                    <%= link_to "Delete", admin_tabular_path(tabular), :method => :delete, :confirm => "Are you sure to delete this?" %>
+                  </td>
+                </tr>
+              <% end %>
             </tbody>
           </table>
+          <%= will_paginate(@tabulars) %>
         </div>
       </div>
     </div>

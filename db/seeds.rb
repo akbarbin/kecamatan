@@ -11,18 +11,33 @@ ActiveRecord::Base.connection.tables.each do |table|
   ActiveRecord::Base.connection.execute("DELETE FROM #{table}") if table != "schema_migrations"
 end
 
+# units
+Unit::NAMES.each do |unit|
+  Unit.create!(name: unit)
+end
+
+# data sources
+DataSource.create!({name: "Badan Perencanaan Pembangunan Kab. Jember", address: "Jl. Sudarman No. 1 Jember", telephone: "03317898"})
+DataSource.create!({name: "Badan Pusat Statistik Kab. Jember", address: "Jl. Cendrawasih No. 20 Jember", telephone: "03317827", default: true})
 # roles
 Role::ROLES.each do |role|
-  Role.create(name: role)
+  Role.create!(name: role)
 end
 
 # users
-User.create!(first_name: "Admin", password: "12345", password_confirmation: "12345",
+User.create!(name: "Admin", password: "12345", password_confirmation: "12345",
   email: "admin@sipd.com", role_id: Role.find_by_name(Role::ADMIN).id)
 
 User.create!(
-  first_name: "Citra", last_name: "Darma", address: "Jalan Nusantara",
+  name: "Kaliwates", address: "Jalan Nusantara",
   telephone: "08563565320", fax: "12345", email: "user@sipd.com",
+  website: "citradarma.com", password: "12345", password_confirmation: "12345",
+  role_id: Role.find_by_name(Role::USER).id
+)
+
+User.create!(
+  name: "Tanggul", address: "Jalan Klatakan",
+  telephone: "08563565320", fax: "12345", email: "tanggul@sipd.com",
   website: "citradarma.com", password: "12345", password_confirmation: "12345",
   role_id: Role.find_by_name(Role::USER).id
 )

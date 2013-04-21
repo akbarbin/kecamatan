@@ -1,0 +1,38 @@
+<div id="support-data-source" style="width:500px;height:auto;">
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="block">
+        <div class="head">
+          <h2><%= title %></h2>
+        </div>
+        <div class="data-fluid">
+          <%= form_for data_source, :url => url, :remote => true do |f| %>
+            <div class="row-form">
+              <div class="span3"><%= f.label :name %></div>
+              <div class="span9"><%= f.text_field :name, :placeholder => "Isilah data nama sumber data" %></div>
+              <div class="span9"><%= display_error(data_source, :name) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.label :telephone %></div>
+              <div class="span9"><%= f.text_field :telephone, :placeholder => "Isilah telephone sumber data" %></div>
+              <div class="span9"><%= display_error(data_source, :telephone) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.label :address %></div>
+              <div class="span9"><%= f.text_field :address, :placeholder => "Isilah alamat sumber data" %></div>
+              <div class="span9"><%= display_error(data_source, :address) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.label :kecamatan %></div>
+              <div class="span9"><%= select(:data_source, :user_id, @user_options) %></div>
+              <div class="span9"><%= display_error(data_source, :address) %></div>
+            </div>
+            <div class="row-form">
+              <div class="span3"><%= f.submit name_button, :class => "btn" %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

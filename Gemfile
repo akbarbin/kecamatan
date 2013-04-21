@@ -50,3 +50,5 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 # gem on development period
 gem 'carrierwave', '0.8.0'
 gem 'mini_magick', '3.5.0'
+gem 'will_paginate', '3.0.4'
+gem 'spreadsheet', '0.8.4'

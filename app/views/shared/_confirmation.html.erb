@@ -1,6 +1,9 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
-
-<%= "_confirmation.html" %>
+<div id="<%= cfrm_id %>" style="width:280px;height:auto;">
+  <h3>Confirmation</h3>
+  <p><%= msg %></p>
+  <div>
+    <input type="submit" id="confirm_button" value="Yes"/>
+    <span class="cancel-confirm">No</span>
+    <div class="clear"></div>
+  </div>
+</div>

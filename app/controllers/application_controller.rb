@@ -15,4 +15,18 @@ class ApplicationController < ActionController::Base
       return current_user
     end
   end
+
+  # Created by [muhamadakbarbw@gmail.com] at April 21 2013,
+  # recording history user
+  def record_history(note)
+    activity = History.new
+    activity.user_id = current_user.id
+    activity.note = note
+    activity.browser = request.env['HTTP_USER_AGENT']
+    activity.ip_address = request.env['REMOTE_ADDR']
+    activity.controller = controller_name
+    activity.action = action_name
+    activity.params = params.inspect
+    activity.save!
+  end
 end

@@ -24,13 +24,13 @@
     </ul>
   </li>
   <li>
-    <a href="#" class="button green">
+    <%= link_to admin_data_sources_path, :class => "button green" do %>
       <div class="arrow"></div>
       <div class="icon">
         <span class="ico-pen-2"></span>
       </div>
       <div class="name">Sumber Data</div>
-    </a>
+    <% end %>
     <ul class="sub">
       <li><a href="#">Elements</a></li>
       <li><a href="#">Validation</a></li>
@@ -74,13 +74,13 @@
     </ul>
   </li>
   <li>
-    <a href="#" class="button orange">
+    <%= link_to admin_histories_path, :class => "button orange" do %>
       <div class="arrow"></div>
       <div class="icon">
         <span class="ico-cloud"></span>
       </div>
-      <div class="name">Other</div>
-    </a>
+      <div class="name">Histories</div>
+    <% end %>
     <ul class="sub">
       <li><a href="#">File handling</a></li>
       <li><a href="#">Images</a></li>

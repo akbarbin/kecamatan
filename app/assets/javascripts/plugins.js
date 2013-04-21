@@ -16,7 +16,31 @@ $(document).ready(function(){
     placement: 'right',
     trigger: 'hover'
   });
-                 
+
+  $(".edit-data-source").fancybox({
+    'onStart': function(){
+      $(this).removeAttr('id')
+//      $.ajax({
+//        type		: "POST",
+//        cache	: false,
+//        url		: "/data/login.php",
+//        data		: $(this).serializeArray(),
+//        success: function(data) {
+//          $.fancybox(data);
+//        }
+//      });
+    },
+    padding: 10,
+    'transitionIn'  : 'elastic',
+    'transitionOut' : 'elastic',
+    'speedIn'       : 600,
+    'speedOut'      : 200,
+    'onClosed': function() {
+    // reset field
+    //resetForm($('#form-share-song'));
+    }
+  });
+
   if($(".fb").length > 0)
     $("a.fb").fancybox({
       padding: 10,

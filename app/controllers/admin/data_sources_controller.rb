@@ -1,0 +1,91 @@
+class Admin::DataSourcesController < ApplicationController
+  before_filter :require_login
+  before_filter :find_data_source, only: [:edit, :update, :destroy, :set_default]
+  layout "data_table"
+
+  def index
+    @data_sources = DataSource.search(params[:data_source]).paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
+    @user_options = User.options_select
+  end
+
+  def new
+    @user_options = User.options_select
+    @data_source = DataSource.new
+    render layout: false
+  end
+
+  def create
+    @data_source = DataSource.new(params[:data_source])
+    respond_to do |format|
+      if @data_source.save
+        record_history("#{current_user.name} membuat data tabular dengan nama : #{@data_source.name}")
+        flash[:notice] = Flash.successfully_created
+        format.html { redirect_to admin_data_sources_path }
+        format.js
+      else
+        flash[:error] = Flash.failed_created
+        format.html { render :new }
+        format.js
+      end
+    end
+  end
+
+  def edit
+    @user_options = User.options_select
+    render layout: false
+  end
+
+  def update
+    respond_to do |format|
+      if @data_source.update_attributes(params[:data_source])
+        record_history("#{current_user.name} mengedit sumber data pada : #{@data_source.name}")
+        flash[:notice] = Flash.succcessfully_updated
+        format.html { redirect_to admin_data_sources_path }
+        format.js
+      else
+        flash[:error] = Flash.failed_updated
+        format.html { render :edit }
+        format.js
+      end
+    end
+  end
+
+  def destroy
+    if @data_source.destroy
+      record_history("#{current_user.name} menghapus sumber data : #{@data_source.name}")
+      flash[:notice] = Flash.successfully_deleted
+      redirect_to admin_data_sources_path
+    end
+  end
+
+  def show
+  end
+
+  def export
+    file = Export.generate({data: DataSource.get_data, filename: "Sumber Data", columns: DataSource.column_names - ["updated_at", "created_at"]})
+    send_file file[:filepath]
+  end
+
+  def set_default
+    data_source_default = DataSource.find_by_default(true)
+    if data_source_default.present?
+      if @data_source.id != data_source_default.id
+        @data_source.update_attribute(:default, true)
+        data_source_default.update_attribute(:default, false)
+      end
+    else
+      @data_source.update_attribute(:default, true)
+    end
+    flash[:notice] = Flash.succcessfully_updated
+    redirect_to admin_data_sources_path
+  end
+
+  private
+  def find_data_source
+    @data_source = DataSource.find_by_id(params[:id])
+    if @data_source.nil?
+      flash[:error] = Flash.not_found
+      redirect_to admin_data_sources_path
+    end
+  end
+end

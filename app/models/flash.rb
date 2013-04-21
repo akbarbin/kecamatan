@@ -54,4 +54,8 @@ class Flash
   def self.not_permited_to_access_page
     "You are not permitted, please login first"
   end
+
+  def self.data_not_found
+    "Data tidak ditemukan"
+  end
 end

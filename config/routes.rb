@@ -63,6 +63,15 @@ Kecamatan::Application.routes.draw do
       end
     end
     resources :tabulars
+    resources :data_sources do
+      collection do
+        get :export
+      end
+      member do
+        put :set_default
+      end
+    end
+    resources :histories, :only => [:index, :create]
   end
 
   # You can have the root of your site routed with "root"

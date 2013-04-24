@@ -1,12 +1,10 @@
 <% content_for :javascript do %>
   <script>
     var table = $("#tree");
-    table.treetable();
+    table.treetable({ expandable: true});
+    table.treetable('expandAll');
   </script>
 <% end %>
-
-<h1>jQuery treeTable</h1>
-
 <table id="tree">
   <thead>
     <tr>

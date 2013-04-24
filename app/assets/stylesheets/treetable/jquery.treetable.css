@@ -20,11 +20,11 @@ table.treetable span.indenter a {
 }
 
 table.treetable tr.collapsed span.indenter a {
-  background-image: image-url('/assets/tree_tables/expand.png');
+  background-image: url('/assets/tree_tables/expand.png');
 }
 
 table.treetable tr.expanded span.indenter a {
-  background-image: image-url('/assets/tree_tables/collapse.png');
+  background-image: url('/assets/tree_tables/collapse.png');
 }
 
 table.treetable tr.selected {
@@ -33,9 +33,9 @@ table.treetable tr.selected {
 }
 
 table.treetable tr.collapsed.selected span.indenter a {
-  background-image: image-url('/assets/tree_tables/expand-light.png');
+  background-image: url('/assets/tree_tables/expand-light.png');
 }
 
 table.treetable tr.expanded.selected span.indenter a {
-  background-image: image-url('/assets/tree_tables/collapse-light.png');
+  background-image: url('/assets/tree_tables/collapse-light.png');
 }

@@ -14,4 +14,3 @@
 //= require jquery_ujs
 //= require admin/data_sources
 //= require reseter
-//= require_tree .

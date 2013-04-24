@@ -2,7 +2,7 @@ class Admin::TabularsController < ApplicationController
   before_filter :require_login
   before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child]
   before_filter :prepare_data, only: [:new, :create, :edit, :update]
-  layout "testing"
+  layout "admin"
 
   def index
     @user_options = GlobalClass.options_select(User)

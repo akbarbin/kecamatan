@@ -1,6 +1,6 @@
 class Admin::HistoriesController < ApplicationController
   before_filter :require_login
-  layout "data_table"
+  layout "admin"
 
   def index
     @histories = History.search(params[:history])

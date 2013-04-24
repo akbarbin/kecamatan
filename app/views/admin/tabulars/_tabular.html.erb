@@ -1,5 +1,9 @@
 <tr data-tt-id="<%= tabular.id %>" data-tt-parent-id="<%= tabular.parent_id %>" data-tt-branch="<%= tabular.kind == "directory" ? "true" : "false" %>">
   <td>
     <span class="<%= tabular.kind %>"><%= tabular.name %></span>
+    <span class="">delete</span>
+    <% if tabular.kind == "directory" %>
+      <span class="">add</span>
+    <% end %>
   </td>
 </tr>

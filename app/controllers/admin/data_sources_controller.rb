@@ -1,7 +1,7 @@
 class Admin::DataSourcesController < ApplicationController
   before_filter :require_login
   before_filter :find_data_source, only: [:edit, :update, :destroy, :set_default]
-  layout "data_table"
+  layout "admin"
 
   def index
     @data_sources = DataSource.search(params[:data_source]).paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])

@@ -8,7 +8,7 @@
     <!--[if gt IE 8]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <![endif]-->
-    <title>Kecamatan</title>
+    <title>SIPD</title>
     <link rel="icon" type="image/ico" href="/assets/favicon.ico"/>
 
     <!--[if lte IE 7]>
@@ -16,7 +16,7 @@
         <script type='text/javascript' src='/assets/plugins/other/lte-ie7.js'></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "admin", :media => "all" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -30,6 +30,7 @@
       </div>
     </div>
     <div class="dialog" id="source" style="display: none;" title="Source"></div>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "admin" %>
+    <%= yield :javascript %>
   </body>
 </html>

@@ -12,4 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.treetable
+//= require plugins/treetable/jquery.treetable

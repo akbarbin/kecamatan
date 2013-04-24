@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421174416) do
+ActiveRecord::Schema.define(:version => 20130424001517) do
 
   create_table "data_sources", :force => true do |t|
     t.string   "name"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(:version => 20130421174416) do
 
   add_index "histories", ["user_id"], :name => "index_histories_on_user_id"
 
+  create_table "nodes", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.string   "kind"
+    t.integer  "size"
+    t.datetime "modified_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -48,8 +58,9 @@ ActiveRecord::Schema.define(:version => 20130421174416) do
   create_table "tabulars", :force => true do |t|
     t.string   "name"
     t.string   "roman_number"
-    t.string   "unit_id"
+    t.string   "kind"
     t.float    "total"
+    t.string   "unit_id"
     t.integer  "parent_id"
     t.integer  "data_source_id"
     t.integer  "user_id"

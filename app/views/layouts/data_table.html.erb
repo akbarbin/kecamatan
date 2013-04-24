@@ -21,6 +21,7 @@
     <script type='text/javascript' src='/assets/plugins.js'></script>
     <script type='text/javascript' src='/assets/charts.js'></script>
     <script type='text/javascript' src='/assets/actions.js'></script>
+    <script src="/assets/jquery.treetable.js" type="text/javascript"></script>
   </head>
   <body>
     <div id="loader"><img src="/assets/loader.gif"/></div>
@@ -29,7 +30,7 @@
       <div class="body">
         <%= render "shared/flash_message" %>
         <%= render 'shared/navigation' %>
-        <%= yield  %>
+        <%= yield %>
       </div>
     </div>
     <div class="dialog" id="source" style="display: none;" title="Source"></div>

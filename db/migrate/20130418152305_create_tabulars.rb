@@ -3,8 +3,9 @@ class CreateTabulars < ActiveRecord::Migration
     create_table :tabulars do |t|
       t.string :name
       t.string :roman_number
-      t.string :unit_id
+      t.string :kind
       t.float :total
+      t.string :unit_id
       t.integer :parent_id
       t.integer :data_source_id
       t.integer :user_id

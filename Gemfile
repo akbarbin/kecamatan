@@ -6,9 +6,10 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development do
-  gem 'sqlite3', '1.3.7'
+#  gem 'sqlite3', '1.3.7'
   gem 'annotate', ">=2.5.0"
   gem 'rails_best_practices'
+  gem 'mysql2'
 end
 
 group :production do
@@ -52,3 +53,4 @@ gem 'carrierwave', '0.8.0'
 gem 'mini_magick', '3.5.0'
 gem 'will_paginate', '3.0.4'
 gem 'spreadsheet', '0.8.4'
+gem 'acts_as_tree', '1.2.0'

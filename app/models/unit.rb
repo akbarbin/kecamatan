@@ -72,12 +72,6 @@ class Unit < ActiveRecord::Base
     end
     where(conditions.join(" AND "))
   end
-
-  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
-  # to get option select unit
-  def self.options_select
-    all.map {|unit| [unit.name, unit.id]}.sort.unshift([PROMPT_OPTION, nil])
-  end
   #++
 
   #--

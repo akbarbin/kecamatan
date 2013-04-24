@@ -85,12 +85,6 @@ class User < ActiveRecord::Base
       nil
     end
   end
-
-  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
-  # to get option select user
-  def self.options_select
-    all.map{|c|[c.name, c.id]}.unshift([PROMPT_OPTION, nil])
-  end
   #++
 
   #--

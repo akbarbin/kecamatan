@@ -5,11 +5,11 @@ class Admin::DataSourcesController < ApplicationController
 
   def index
     @data_sources = DataSource.search(params[:data_source]).paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
-    @user_options = User.options_select
+    @user_options = GlobalClass.options_select(User)
   end
 
   def new
-    @user_options = User.options_select
+    @user_options = GlobalClass.options_select(User)
     @data_source = DataSource.new
     render layout: false
   end
@@ -31,7 +31,7 @@ class Admin::DataSourcesController < ApplicationController
   end
 
   def edit
-    @user_options = User.options_select
+    @user_options = GlobalClass.options_select(User)
     render layout: false
   end
 

@@ -8,13 +8,17 @@
         <div class="data-fluid">
           <%= form_for tabular, :url => url, :remote => true do |f| %>
             <div class="row-form">
+              <div class="span3"><%= f.label :parent_sub %></div>
+              <div class="span9"><%= select(:tabular, :parent_id, tabular_options) %></div>
+            </div>
+            <div class="row-form">
               <div class="span3"><%= f.label :name %></div>
               <div class="span9"><%= f.text_field :name, :placeholder => "Isilah data nama tabular" %></div>
               <div class="span9"><%= display_error(tabular, :name) %></div>
             </div>
             <div class="row-form">
               <div class="span3"><%= f.label :unit %></div>
-              <div class="span9"><%= select(:tabular, :unit_id, option_tabulars) %></div>
+              <div class="span9"><%= select(:tabular, :unit_id, unit_options) %></div>
               <div class="span9"><%= display_error(tabular, :unit_id) %></div>
             </div>
             <div class="row-form">

@@ -79,12 +79,6 @@ class DataSource < ActiveRecord::Base
   def self.get_data
     all.map{|c| [c.name, c.telephone, c.address, c.user_name]}
   end
-
-  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
-  # to generate to option select data sources
-  def self.options_select
-    all.map {|unit| [unit.name, unit.id]}.sort.unshift([PROMPT_OPTION, nil])
-  end
   #++
 
   #--

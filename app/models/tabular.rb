@@ -9,15 +9,18 @@ class Tabular < ActiveRecord::Base
 
   #--
   # includes
+  include ActsAsTree
   #++
 
   #--
   # attribute
-  attr_accessible :name, :parent_id, :user_id, :unit_id, :total, :data_source_id
+  attr_accessible :name, :parent_id, :user_id, :unit_id, :total, :data_source_id,
+    :kind
   #++
 
   #--
   # extra capabilities
+  acts_as_tree order: :name
   #++
 
   #--

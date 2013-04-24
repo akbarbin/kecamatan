@@ -5,6 +5,6 @@ class Admin::HistoriesController < ApplicationController
   def index
     @histories = History.search(params[:history])
     .paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
-    @user_options = User.options_select
+    @user_options = GlobalClass.options_select(User)
   end
 end

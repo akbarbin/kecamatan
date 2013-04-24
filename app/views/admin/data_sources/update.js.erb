@@ -7,7 +7,7 @@ $(document).ready(function(){
         $('#support-data-source').html('<%= escape_javascript(
           render('/admin/data_sources/form', :url => admin_data_sources_path,
             :data_source => @data_source, :title => "Ubah Sumber Data",
-            :name_button => GlobalTitle.button_update)) %>');
+            :name_button => GlobalClass.button_update)) %>');
       <% else %>
         parent.$.fancybox.close();
       <% end %>

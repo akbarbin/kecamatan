@@ -12,6 +12,10 @@
               <div class="span9"><%= select(:tabular, :parent_id, tabular_options) %></div>
             </div>
             <div class="row-form">
+              <div class="span3"><%= f.label :kind %></div>
+              <div class="span9"><%= f.select :kind, Tabular::KIND_OPTIONS ,:prompt => PROMPT_OPTION %></div>
+            </div>
+            <div class="row-form">
               <div class="span3"><%= f.label :name %></div>
               <div class="span9"><%= f.text_field :name, :placeholder => "Isilah data nama tabular" %></div>
               <div class="span9"><%= display_error(tabular, :name) %></div>

@@ -7,8 +7,10 @@ $(document).ready(function(){
 /* Created by [muhamad.akbar@kiranatama.com] at Apr 16 2012,
  * Add data with fancybox, this is a general add data */
 function addDataWithFancyBox(){
-  $("#add-data").click(function(event){
+  $(".add-data").click(function(event){
     var href = $(this).attr('href');
+    var idTabular = $(this).attr('id');
+    var nameTabular = $(this).parent().find('.parent').text();
     $.ajax({
       url: href,
       success:function(data){
@@ -18,6 +20,10 @@ function addDataWithFancyBox(){
           'speedIn'       : 600,
           'speedOut'      : 200
         });
+        if ($.isNumeric(idTabular)){
+          $('#tabular_parent_id').parent().append(nameTabular);
+          $('#tabular_parent_id').replaceWith("<input id=\"tabular_parent_id\" name=\"tabular[parent_id]\" type=\"hidden\" value=\""+idTabular+"\">");
+        }
       }
     });
     event.preventDefault();

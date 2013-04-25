@@ -1,6 +1,7 @@
 class Tabular < ActiveRecord::Base
   #--
   # constants
+  KIND_OPTIONS = ['parent','child']
   #++
 
   #--

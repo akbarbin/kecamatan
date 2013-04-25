@@ -56,10 +56,10 @@ table span {
   padding: .2em 0 .2em 1.5em;
 }
 
-table span.file {
+table span.child {
   background-image: url('/assets/tree_tables/file.png');
 }
 
-table span.directory {
+table span.parent {
   background-image: url('/assets/tree_tables/folder.png');
 }

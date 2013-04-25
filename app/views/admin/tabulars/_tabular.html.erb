@@ -1,9 +1,8 @@
-<tr data-tt-id="<%= tabular.id %>" data-tt-parent-id="<%= tabular.parent_id %>" data-tt-branch="<%= tabular.kind == "directory" ? "true" : "false" %>">
+<tr data-tt-id="<%= tabular.id %>" data-tt-parent-id="<%= tabular.parent_id %>" data-tt-branch="<%= tabular.kind == "parent" ? "true" : "false" %>">
   <td>
     <span class="<%= tabular.kind %>"><%= tabular.name %></span>
-    <span class="">delete</span>
-    <% if tabular.kind == "directory" %>
-      <span class="">add</span>
+    <% if tabular.kind == "parent" %>
+      <a id="<%= tabular.id %>"class="add-data" href="/admin/tabulars/new" class="btn btn-link" type="button">Tambah</a>
     <% end %>
   </td>
 </tr>

@@ -21,7 +21,7 @@ class Admin::TabularsController < ApplicationController
         record_history("#{current_user.name} membuat data tabular dengan nama #{@tabular.name}")
         flash[:notice] = Flash.successfully_created
         format.html { redirect_to admin_tabulars_path }
-        format.js
+        format.js { render :js => "window.location.href = ('#{admin_tabulars_path}');" }
       else
         flash[:error] = Flash.failed_created
         format.html { render :new }

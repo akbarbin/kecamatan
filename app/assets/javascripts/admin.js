@@ -33,3 +33,4 @@
 //= require plugins
 //= require charts
 //= require actions
+//= require admin/data_sources

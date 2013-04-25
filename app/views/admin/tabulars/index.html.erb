@@ -5,13 +5,32 @@
     table.treetable('expandAll');
   </script>
 <% end %>
-<table id="tree">
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @tabulars %>
-  </tbody>
-</table>
+<div class="content">
+  <div class="page-header">
+    <div class="icon">
+      <span class="ico-layout-7"></span>
+    </div>
+    <h1>Kelompok Data <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="span3">
+        <a id="add-data" href="/admin/tabulars/new" class="btn btn-large btn-block btn-warning add-data" type="button">Tambah data tabular</a>
+      </div>
+      <div class="block">
+        <div class="data-fluid">
+          <table id="tree">
+            <thead>
+              <tr>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @tabulars %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

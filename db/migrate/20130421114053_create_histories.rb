@@ -5,7 +5,7 @@ class CreateHistories < ActiveRecord::Migration
       t.string :ip_address
       t.string :controller
       t.string :action
-      t.string :params
+      t.text :params
       t.string :note
       t.integer :user_id
       t.timestamps

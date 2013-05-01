@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   attr_protected :password, :password_confirmation, :email
   attr_accessible :email, :password, :password_confirmation, :name, :telephone,
     :fax, :website, :old_password, :address, :role_id, :image_user_cache,
-    :image_user
+    :image_user, :remove_image_user
   attr_accessor :password, :old_password, :image_user_cache
   #++
 

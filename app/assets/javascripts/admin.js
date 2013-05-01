@@ -23,7 +23,6 @@
 //= require plugins/jflot/jquery.flot
 //= require plugins/jflot/jquery.flot.stack
 //= require plugins/jflot/jquery.flot.pie
-//= require plugins/jflot/jquery.flot.resize
 //= require plugins/sparklines/jquery.sparkline.min
 //= require plugins/mcustomscrollbar/jquery.mCustomScrollbar.min
 //= require plugins/uniform/jquery.uniform.min

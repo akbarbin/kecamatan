@@ -1,65 +1,10 @@
 <div class="sidebar">
   <div class="top">
     <a href="#" class="logo"></a>
-    <div class="search">
-      <div class="input-prepend">
-        <span class="add-on orange"><span class="icon-search icon-white"></span></span>
-        <input type="text" placeholder="search..."/>
-      </div>
-    </div>
   </div>
   <div class="nContainer">
     <ul class="navigation bordered">
-      <li class="active"><a href="#" class="blblue">Dashboard</a></li>
-      <li>
-        <a href="#" class="blyellow">UI Elements</a>
-        <div class="open"></div>
-        <ul>
-          <li><a href="#">UI Elements</a></li>
-          <li><a href="#">Widgets</a></li>
-          <li><a href="#">Buttons</a></li>
-          <li><a href="#">Icons</a></li>
-          <li><a href="#">Grid System</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="blgreen">Forms Stuff</a>
-        <div class="open"></div>
-        <ul>
-          <li><a href="#">Form Elements</a></li>
-          <li><a href="#">Validation</a></li>
-          <li><a href="#">Grid</a></li>
-          <li><a href="#">Editors</a></li>
-          <li><a href="#">Wizard</a></li>
-        </ul>
-      </li>
-      <li><a href="#" class="blred">Statistic</a></li>
-      <li>
-        <a href="#" class="bldblue">Tables</a>
-        <div class="open"></div>
-        <ul>
-          <li><a href="#">Simple</a></li>
-          <li><a href="#">Dynamic</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="blpurple">Samples</a>
-        <div class="open"></div>
-        <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Login</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#" class="blorange">Other</a>
-        <div class="open"></div>
-        <ul>
-          <li><a href="#">File handling</a></li>
-          <li><a href="#">Images</a></li>
-          <li><a href="#">Typography</a></li>
-          <li><a href="#">Error 404</a></li>
-        </ul>
-      </li>
+      <li class="active"><%= link_to "Dashboard", admin_dashboards_path, :class => "blblue" %></li>
       <li>
         <%= link_to "Sign Out", session_path(current_user), :method => :delete, :class => "blorange" %>
       </li>

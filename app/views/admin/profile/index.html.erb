@@ -34,6 +34,12 @@
             </div>
           </div>
           <div class="row-form">
+            <div class="span3"><%= f.label :remove_image_user %></div>
+            <div class="span9">
+              <%= f.check_box :remove_image_user %>
+            </div>
+          </div>
+          <div class="row-form">
             <div class="span3"><%= f.submit "Update", :class => "btn" %></div>
           </div>
         <% end %>

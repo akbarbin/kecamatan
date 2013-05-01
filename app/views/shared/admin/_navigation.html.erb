@@ -1,11 +1,11 @@
 <ul class="navigation">
   <li>
-    <a href="#" class="button">
+    <%= link_to admin_dashboards_path, :class => "button" do %>
       <div class="icon">
         <span class="ico-monitor"></span>
       </div>
       <div class="name">Dashboard</div>
-    </a>
+    <% end %>
   </li>
   <li>
     <%= link_to "#", :class => "button yellow" do %>
@@ -29,13 +29,6 @@
       </div>
       <div class="name">Sumber Data</div>
     <% end %>
-    <ul class="sub">
-      <li><a href="#">Elements</a></li>
-      <li><a href="#">Validation</a></li>
-      <li><a href="#">Grid</a></li>
-      <li><a href="#">Editors</a></li>
-      <li><a href="#">Wizard</a></li>
-    </ul>
   </li>
   <li>
     <%= link_to edit_password_admin_profile_index_path, :class => "button red" do %>
@@ -53,10 +46,6 @@
       </div>
       <div class="name">Edit Kontak</div>
     <% end %>
-    <ul class="sub">
-      <li><a href="#">Simple</a></li>
-      <li><a href="#">Dynamic</a></li>
-    </ul>
   </li>
   <li>
     <a href="#" class="button purple">
@@ -79,16 +68,10 @@
       </div>
       <div class="name">Histories</div>
     <% end %>
-    <ul class="sub">
-      <li><a href="#">File handling</a></li>
-      <li><a href="#">Images</a></li>
-      <li><a href="#">Typography</a></li>
-      <li><a href="#">Error 404</a></li>
-    </ul>
   </li>
   <li>
     <div class="user">
-      <img src="/assets/examples/users/dmitry_m.jpg" align="left"/>
+      <%= current_user.image_user? ? image_tag(current_user.image_user_url(:thumb), :align => "left", :size => '32x32') : image_tag("avatar.gif", :size => '32x32', :align => "left") %>
       <a href="#" class="name">
         <span>Dmitry Ivaniuk</span>
         <span class="sm">Administrator</span>

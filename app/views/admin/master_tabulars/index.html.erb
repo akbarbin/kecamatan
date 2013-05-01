@@ -10,18 +10,21 @@
     <div class="icon">
       <span class="ico-layout-7"></span>
     </div>
-    <h1>Kelompok Data <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
+    <h1>Master Tabular <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
   </div>
   <div class="row-fluid">
     <div class="span12">
       <div class="span3">
-        <%= form_tag generate_layout_admin_master_tabulars_path, :method => :post do %>
-          <%= label_tag :pilih_kecamatan %>
-          <%= select("data_source", :user_id, @user_options) %>
-          <%= label_tag :pilih_tahun %>
-          <%= select_year(Date.today, :start_year => 1992, :end_year => 2019) %>
-          <%= submit_tag "Cari", :class => "btn" %>
-        <% end %>
+        <a id="add-data" href="/admin/master_tabulars/new" class="btn btn-large btn-block btn-warning add-data" type="button">Tambah data master tabular</a>
+      </div>
+      <div class="data-fluid">
+        <div class="row-form">
+          <%= form_tag admin_tabulars_path, :method => :post do %>
+            <%= label_tag :pilih_kecamatan %>
+            <%= select("data_source", :user_id, @user_options) %>
+            <%= submit_tag "Filter", :class => "btn" %>
+          <% end %>
+        </div>
       </div>
       <div class="block">
         <div class="data-fluid">
@@ -32,7 +35,7 @@
               </tr>
             </thead>
             <tbody>
-<%#= render @tabulars %>
+              <%= render @master_tabulars %>
             </tbody>
           </table>
         </div>

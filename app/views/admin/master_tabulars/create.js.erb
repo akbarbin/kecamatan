@@ -1,0 +1,14 @@
+$(document).ready(function(){
+  $.ajax({
+    beforeSend:function(respond){
+    },
+    complete:function(respond){
+      <%- if @master_tabular.errors.any? %>
+        $('#support-data').html('<%= escape_javascript(
+          render('/admin/master_tabulars/form', :url => admin_master_tabulars_path,
+            :master_tabular => @master_tabular, :title => "Tambah Sumber Master Data"))
+          %>');
+      <% end %>
+    }
+  });
+});

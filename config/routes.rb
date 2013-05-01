@@ -62,6 +62,11 @@ Kecamatan::Application.routes.draw do
         put :save_password
       end
     end
+    resources :master_tabulars do
+      collection do
+        post :generate_layout
+      end
+    end
     resources :tabulars
     resources :nodes
     resources :data_sources do

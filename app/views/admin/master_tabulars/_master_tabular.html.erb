@@ -1,0 +1,8 @@
+<tr data-tt-id="<%= master_tabular.id %>" data-tt-parent-id="<%= master_tabular.parent_id %>" data-tt-branch="<%= master_tabular.kind == "parent" ? "true" : "false" %>">
+  <td>
+    <span class="<%= master_tabular.kind %>"><%= master_tabular.name %></span>
+    <% if master_tabular.kind == "parent" %>
+      <a id="<%= master_tabular.id %>"class="add-data" href="/admin/master_tabulars/new" class="btn btn-link" type="button">Tambah</a>
+    <% end %>
+  </td>
+</tr>

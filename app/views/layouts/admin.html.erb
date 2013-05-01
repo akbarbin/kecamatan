@@ -10,7 +10,6 @@
     <![endif]-->
     <title>SIPD</title>
     <link rel="icon" type="image/ico" href="/assets/favicon.ico"/>
-
     <!--[if lte IE 7]>
         <link href="css/ie.css" rel="stylesheet" type="text/css" />
         <script type='text/javascript' src='/assets/plugins/other/lte-ie7.js'></script>
@@ -22,10 +21,10 @@
   <body>
     <div id="loader"><img src="/assets/loader.gif"/></div>
     <div class="wrapper">
-      <%= render 'shared/sidebar' %>
+      <%= render 'shared/admin/sidebar' %>
       <div class="body">
         <%= render "shared/flash_message" %>
-        <%= render 'shared/navigation' %>
+        <%= render 'shared/admin/navigation' %>
         <%= yield %>
       </div>
     </div>

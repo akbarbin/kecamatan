@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424001517) do
+ActiveRecord::Schema.define(:version => 20130427163900) do
 
   create_table "data_sources", :force => true do |t|
     t.string   "name"
@@ -25,12 +25,25 @@ ActiveRecord::Schema.define(:version => 20130424001517) do
 
   add_index "data_sources", ["user_id"], :name => "index_data_sources_on_user_id"
 
+  create_table "grades", :force => true do |t|
+    t.float    "value"
+    t.integer  "user_id"
+    t.integer  "tabular_id"
+    t.integer  "data_source_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "grades", ["data_source_id"], :name => "index_grades_on_data_source_id"
+  add_index "grades", ["tabular_id"], :name => "index_grades_on_tabular_id"
+  add_index "grades", ["user_id"], :name => "index_grades_on_user_id"
+
   create_table "histories", :force => true do |t|
     t.string   "browser"
     t.string   "ip_address"
     t.string   "controller"
     t.string   "action"
-    t.string   "params"
+    t.text     "params"
     t.string   "note"
     t.integer  "user_id"
     t.datetime "created_at", :null => false
@@ -38,6 +51,20 @@ ActiveRecord::Schema.define(:version => 20130424001517) do
   end
 
   add_index "histories", ["user_id"], :name => "index_histories_on_user_id"
+
+  create_table "master_tabulars", :force => true do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.string   "ancestry"
+    t.string   "ref_code"
+    t.integer  "level"
+    t.integer  "unit_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "master_tabulars", ["level"], :name => "index_master_tabulars_on_level"
+  add_index "master_tabulars", ["unit_id", "ref_code", "parent_id"], :name => "index_master_tabulars_on_unit_id_and_ref_code_and_parent_id"
 
   create_table "nodes", :force => true do |t|
     t.integer  "parent_id"
@@ -57,21 +84,21 @@ ActiveRecord::Schema.define(:version => 20130424001517) do
 
   create_table "tabulars", :force => true do |t|
     t.string   "name"
-    t.string   "roman_number"
-    t.string   "kind"
-    t.float    "total"
-    t.string   "unit_id"
     t.integer  "parent_id"
-    t.integer  "data_source_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.integer  "unit_id"
+    t.string   "year"
+    t.string   "kind"
     t.integer  "user_id"
+    t.integer  "data_source_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
-  add_index "tabulars", ["data_source_id"], :name => "index_tabulars_on_data_source_id"
-  add_index "tabulars", ["parent_id"], :name => "index_tabulars_on_parent_id"
-  add_index "tabulars", ["unit_id"], :name => "index_tabulars_on_unit_id"
-  add_index "tabulars", ["user_id"], :name => "index_tabulars_on_user_id"
+  add_index "tabulars", ["unit_id", "year"], :name => "index_tabulars_on_unit_id_and_year"
+  add_index "tabulars", ["user_id", "parent_id", "lft", "rgt"], :name => "index_tabulars_on_user_id_and_parent_id_and_lft_and_rgt"
 
   create_table "units", :force => true do |t|
     t.string   "name"

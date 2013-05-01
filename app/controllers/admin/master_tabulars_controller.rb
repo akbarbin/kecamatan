@@ -1,5 +1,6 @@
 class Admin::MasterTabularsController < ApplicationController
   before_filter :require_login
+  before_filter :prepare_data, only: [:new, :create, :edit, :update]
   before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child]
   layout "admin"
 
@@ -75,5 +76,9 @@ class Admin::MasterTabularsController < ApplicationController
       flash[:error] = Flash.data_not_found
       redirect_to admin_master_tabulars_path
     end
+  end
+
+  def prepare_data
+    @unit_options = GlobalClass.options_select(Unit)
   end
 end

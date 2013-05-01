@@ -1,7 +1,7 @@
 class MasterTabular < ActiveRecord::Base
   #--
   # constants
-  KIND_OPTIONS = ['directory','child']
+  KIND_OPTIONS = ['parent','child']
   #++
 
   #--
@@ -10,6 +10,7 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # includes
+  include ActsAsTree
   #++
 
   #--
@@ -19,11 +20,12 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # extra capabilities
-  #  acts_as_tree order: :name
+  acts_as_tree order: :name
   #++
 
   #--
   # belongs_to
+  belongs_to :unit
   #++
 
   #--
@@ -92,7 +94,7 @@ class MasterTabular < ActiveRecord::Base
     parent_id = nil
     User.all.each do |user|
       self.all.each do |master_tabular|
-        parent_id = Tabular.find_by_name(master_tabular.parent.name).id if master_tabular.parent_id?
+        parent_id = Tabular.find_by_name(master_tabular.parent.name).id rescue nil
         Tabular.create(
           name: master_tabular.name, year: year, parent_id: parent_id, user_id: user.id
         )

@@ -32,6 +32,7 @@ class Unit < ActiveRecord::Base
   #--
   # has_many
   has_many :users
+  has_many :master_tabulars
   #++
 
   #--

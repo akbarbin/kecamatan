@@ -16,7 +16,7 @@ class Tabular < ActiveRecord::Base
   #--
   # attribute
   attr_accessible :name, :parent_id, :user_id, :unit_id, :total, :data_source_id,
-    :kind
+    :kind, :year
   #++
 
   #--
@@ -46,7 +46,6 @@ class Tabular < ActiveRecord::Base
   #--
   # validations
   validates :name, presence: {message: Flash.required_presence}
-  validates :unit_id, presence: {message: Flash.required_presence}
   #++
 
   #--
@@ -72,10 +71,9 @@ class Tabular < ActiveRecord::Base
     params.each do |key, value|
       if value.present?
         case key
-        when "search"
-          conditions << "name LIKE '%#{value}%'"
+        when ""
         else
-          conditions << key +"="+ value
+          conditions << "#{key} = '#{value}'"
         end
       end
     end

@@ -20,6 +20,11 @@
               <div class="span9"><%= display_error(master_tabular, :name) %></div>
             </div>
             <div class="row-form">
+              <div class="span3"><%= f.label :unit %></div>
+              <div class="span9"><%= select(:master_tabular, :unit_id, unit_options) %></div>
+              <div class="span9"><%= display_error(master_tabular, :unit_id) %></div>
+            </div>
+            <div class="row-form">
               <div class="span3"><%= f.submit :class => "btn" %></div>
             </div>
           <% end %>

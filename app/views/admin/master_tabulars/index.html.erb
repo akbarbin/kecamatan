@@ -17,14 +17,12 @@
       <div class="span3">
         <a id="add-data" href="/admin/master_tabulars/new" class="btn btn-large btn-block btn-warning add-data" type="button">Tambah data master tabular</a>
       </div>
-      <div class="data-fluid">
-        <div class="row-form">
-          <%= form_tag admin_tabulars_path, :method => :post do %>
-            <%= label_tag :pilih_kecamatan %>
-            <%= select("data_source", :user_id, @user_options) %>
-            <%= submit_tag "Filter", :class => "btn" %>
-          <% end %>
-        </div>
+      <div class="span3">
+        <%= form_tag generate_layout_admin_master_tabulars_path, :method => :post do %>
+          <%= label_tag :pilih_tahun %>
+          <%= select_year(Date.today, :start_year => 1992, :end_year => 2019) %>
+          <%= submit_tag "Generate layout", :class => "btn" %>
+        <% end %>
       </div>
       <div class="block">
         <div class="data-fluid">
@@ -32,6 +30,7 @@
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Satuan</th>
               </tr>
             </thead>
             <tbody>

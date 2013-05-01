@@ -1,12 +1,13 @@
 class Admin::TabularsController < ApplicationController
   before_filter :require_login
-  before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child]
+  before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child, :show]
   before_filter :prepare_data, only: [:new, :create, :edit, :update]
   layout "admin"
 
   def index
     @user_options = GlobalClass.options_select(User)
-    @tabulars = Tabular.search(params[:tabular]).paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
+    @tabulars = Tabular.search(params[:tabular]).includes(:user).group(:year, :user_id)
+    .paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
   end
 
   def new
@@ -34,6 +35,8 @@ class Admin::TabularsController < ApplicationController
     render layout: false
   end
 
+  def show;end
+
   def update
     respond_to do |format|
       if @tabular.update_attributes(params[:tabular])
@@ -58,6 +61,8 @@ class Admin::TabularsController < ApplicationController
   end
 
   def show
+    @user_tabulars = Tabular.where(["year = ? AND user_id = ?", @tabular.year, @tabular.user_id])
+      .paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
   end
 
   private

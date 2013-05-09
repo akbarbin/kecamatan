@@ -68,7 +68,6 @@ Kecamatan::Application.routes.draw do
       end
     end
     resources :tabulars
-    resources :nodes
     resources :data_sources do
       collection do
         get :export

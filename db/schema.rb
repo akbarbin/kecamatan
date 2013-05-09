@@ -55,28 +55,17 @@ ActiveRecord::Schema.define(:version => 20130427163900) do
   create_table "master_tabulars", :force => true do |t|
     t.string   "name"
     t.string   "roman_number"
-    t.string   "kind"
+    t.string   "ancestry"
     t.string   "unit_id"
     t.string   "ref_code"
-    t.integer  "parent_id"
     t.integer  "data_source_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "master_tabulars", ["ancestry"], :name => "index_master_tabulars_on_ancestry"
   add_index "master_tabulars", ["data_source_id"], :name => "index_master_tabulars_on_data_source_id"
-  add_index "master_tabulars", ["parent_id"], :name => "index_master_tabulars_on_parent_id"
   add_index "master_tabulars", ["unit_id"], :name => "index_master_tabulars_on_unit_id"
-
-  create_table "nodes", :force => true do |t|
-    t.integer  "parent_id"
-    t.string   "name"
-    t.string   "kind"
-    t.integer  "size"
-    t.datetime "modified_at"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

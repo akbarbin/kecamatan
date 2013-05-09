@@ -1,16 +1,16 @@
 class Admin::MasterTabularsController < ApplicationController
   before_filter :require_login
-  before_filter :prepare_data, only: [:new, :create, :edit, :update]
+  before_filter :prepare_data, only: [:index, :new, :create, :edit, :update]
   before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child]
   layout "admin"
 
   def index
-    @master_tabulars = MasterTabular.all
+    @master_tabulars = MasterTabular.scoped
+    @master_tabular = MasterTabular.new
   end
 
   def new
-    @master_tabular = MasterTabular.new
-    render layout: false # to display fancybox
+    @master_tabular = MasterTabular.new(:parent_id => params[:parent_id])
   end
 
   def create
@@ -30,7 +30,6 @@ class Admin::MasterTabularsController < ApplicationController
   end
 
   def edit
-    render layout: false
   end
 
   def update

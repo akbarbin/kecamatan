@@ -1,10 +1,3 @@
-<% content_for :javascript do %>
-  <script>
-    var table = $("#tree");
-    table.treetable({ expandable: true});
-    table.treetable('expandAll');
-  </script>
-<% end %>
 <div class="content">
   <div class="page-header">
     <div class="icon">
@@ -15,7 +8,7 @@
   <div class="row-fluid">
     <div class="span12">
       <div class="span3">
-        <a id="add-data" href="/admin/master_tabulars/new" class="btn btn-large btn-block btn-warning add-data" type="button">Tambah data master tabular</a>
+        <a id="add-data" href="/admin/master_tabulars/new" class="btn btn-large btn-block btn-warning" type="button">Tambah data master tabular</a>
       </div>
       <div class="span3">
         <%= form_tag generate_layout_admin_master_tabulars_path, :method => :post do %>
@@ -26,17 +19,7 @@
       </div>
       <div class="block">
         <div class="data-fluid">
-          <table id="tree">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Satuan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <%= render @master_tabulars %>
-            </tbody>
-          </table>
+          <%= nested_master_tabulars(@master_tabulars.arrange(:order => :created_at)) %>
         </div>
       </div>
     </div>

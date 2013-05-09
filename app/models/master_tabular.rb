@@ -6,11 +6,11 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # requires
+  has_ancestry
   #++
 
   #--
   # includes
-  include ActsAsTree
   #++
 
   #--
@@ -20,7 +20,6 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # extra capabilities
-  acts_as_tree order: :name
   #++
 
   #--
@@ -47,7 +46,7 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # callback
-  before_save :generate_ref_code!
+  #before_save :generate_ref_code!
   #++
 
   #--

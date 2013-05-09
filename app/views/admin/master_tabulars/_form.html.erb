@@ -6,23 +6,14 @@
           <h2><%= title %></h2>
         </div>
         <div class="data-fluid">
-          <%= form_for master_tabular, :url => url, :remote => true do |f| %>
+          <%= form_for master_tabular, :url => url do |f| %>
             <div class="row-form">
-              <div class="span3"><span class="parent-id"></span></div>
-            </div>
-            <div class="row-form">
-              <div class="span3"><%= f.label :kind %></div>
-              <div class="span9"><%= f.select :kind, MasterTabular::KIND_OPTIONS ,:prompt => PROMPT_OPTION %></div>
+              <div class="span3"><%= f.hidden_field :parent_id %></div>
             </div>
             <div class="row-form">
               <div class="span3"><%= f.label :name %></div>
               <div class="span9"><%= f.text_field :name, :placeholder => "Isilah data nama tabular" %></div>
               <div class="span9"><%= display_error(master_tabular, :name) %></div>
-            </div>
-            <div class="row-form">
-              <div class="span3"><%= f.label :unit %></div>
-              <div class="span9"><%= select(:master_tabular, :unit_id, unit_options) %></div>
-              <div class="span9"><%= display_error(master_tabular, :unit_id) %></div>
             </div>
             <div class="row-form">
               <div class="span3"><%= f.submit :class => "btn" %></div>

@@ -1,11 +1,9 @@
-<tr data-tt-id="<%= master_tabular.id %>" data-tt-parent-id="<%= master_tabular.parent_id %>" data-tt-branch="<%= master_tabular.kind == "parent" ? "true" : "false" %>">
-  <td>
-    <span class="<%= master_tabular.kind %>"><%= master_tabular.name %></span>
-    <% if master_tabular.kind == "parent" %>
-      <a id="<%= master_tabular.id %>"class="add-data" href="/admin/master_tabulars/new" class="btn btn-link" type="button">Tambah</a>
-    <% end %>
-  </td>
-  <td>
-    <span class=""><%= master_tabular.unit.name rescue "-" %></span>
-  </td>
-</tr>
+<div class="master_tabular">
+  <div class="content">
+    <%= master_tabular.name %>
+  </div>
+  <div class="actions">
+    <%= link_to "Add", new_admin_master_tabular_path(:parent_id => master_tabular) %> |
+    <%= link_to "Destroy", admin_master_tabular_path(master_tabular), :confirm => "Are you sure?", :method => :delete %>
+  </div>
+</div>

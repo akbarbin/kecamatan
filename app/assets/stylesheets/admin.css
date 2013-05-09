@@ -13,3 +13,11 @@
  *= require treetable/jquery.treetable
  *= require treetable/screen
 */
+
+.nested_master_tabulars {
+  margin-left: 30px;
+}
+
+.nested_master_tabulars .nested_master_tabulars .nested_master_tabulars .nested_master_tabulars {
+  margin-left: 0;
+}

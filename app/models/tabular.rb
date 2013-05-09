@@ -6,6 +6,7 @@ class Tabular < ActiveRecord::Base
 
   #--
   # requires
+  has_ancestry cache_depth: true
   #++
 
   #--
@@ -14,7 +15,8 @@ class Tabular < ActiveRecord::Base
 
   #--
   # attribute
-  attr_accessible :name, :user_id, :total, :data_source_id, :year
+  attr_accessible :name, :user_id, :total, :data_source_id, :year, :ancestry,
+    :ancestry_depth, :parent_id
   #++
 
   #--
@@ -55,7 +57,7 @@ class Tabular < ActiveRecord::Base
 
   #--
   # other definition such as alias_method
-  delegate :name, to: :user, prefix: true
+  delegate :name, :id, to: :user, prefix: true
   delegate :name, to: :unit, prefix: true
   delegate :name, to: :data_source, prefix: true
   #++

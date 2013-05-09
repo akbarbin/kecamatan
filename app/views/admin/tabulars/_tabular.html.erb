@@ -1,8 +1,5 @@
-<tr data-tt-id="<%= tabular.id %>" data-tt-parent-id="<%= tabular.parent_id %>" data-tt-branch="<%= tabular.kind == "parent" ? "true" : "false" %>">
-  <td>
-    <span class="<%= tabular.kind %>"><%= tabular.name %></span>
-    <% if tabular.kind == "parent" %>
-      <a id="<%= tabular.id %>"class="add-data" href="/admin/tabulars/new" class="btn btn-link" type="button">Tambah</a>
-    <% end %>
-  </td>
-</tr>
+<div class="tabular">
+  <div class="content">
+    <%= tabular.name %><%= text_field_tag "tabular[#{tabular.id}]", tabular.total.to_i, :class => "field-tabular" %>
+  </div>
+</div>

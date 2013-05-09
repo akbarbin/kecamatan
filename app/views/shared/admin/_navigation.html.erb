@@ -18,7 +18,6 @@
     <ul class="sub">
       <li><%= link_to "Manage Master Tabular", admin_master_tabulars_path %></li>
       <li><%= link_to "Manage Data Tabular", admin_tabulars_path %></li>
-      <li><a href="#">Manage Data Tabular Kecamatan</a></li>
     </ul>
   </li>
   <li>
@@ -48,19 +47,6 @@
     <% end %>
   </li>
   <li>
-    <a href="#" class="button purple">
-      <div class="arrow"></div>
-      <div class="icon">
-        <span class="ico-box"></span>
-      </div>
-      <div class="name">Keterisian Data</div>
-    </a>
-    <ul class="sub">
-      <li><a href="#">FAQ</a></li>
-      <li><a href="#">Login</a></li>
-    </ul>
-  </li>
-  <li>
     <%= link_to admin_histories_path, :class => "button orange" do %>
       <div class="arrow"></div>
       <div class="icon">
@@ -73,8 +59,8 @@
     <div class="user">
       <%= current_user.image_user? ? image_tag(current_user.image_user_url(:thumb), :align => "left", :size => '32x32') : image_tag("avatar.gif", :size => '32x32', :align => "left") %>
       <a href="#" class="name">
-        <span>Dmitry Ivaniuk</span>
-        <span class="sm">Administrator</span>
+        <span><%= current_user.name %></span>
+        <span class="sm"><%= current_user.role.name %></span>
       </a>
     </div>
     <div class="buttons">

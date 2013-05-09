@@ -34,3 +34,4 @@
 //= require actions
 //= require admin/data_sources
 //= require admin/master_tabulars
+//= require admin/tabulars

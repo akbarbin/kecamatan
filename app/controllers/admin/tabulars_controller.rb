@@ -12,7 +12,6 @@ class Admin::TabularsController < ApplicationController
 
   def new
     @tabular = Tabular.new
-    render layout: false # to display fancybox
   end
 
   def create
@@ -34,8 +33,6 @@ class Admin::TabularsController < ApplicationController
   def edit
     render layout: false
   end
-
-  def show;end
 
   def update
     respond_to do |format|
@@ -61,8 +58,24 @@ class Admin::TabularsController < ApplicationController
   end
 
   def show
-    @user_tabulars = Tabular.where(["year = ? AND user_id = ?", @tabular.year, @tabular.user_id])
-      .paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
+    @user_tabulars = @tabular.descendants
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 9 2013,
+  # general display
+  def general_display
+    @tabulars = Tabular.roots.where(['user_id = ? AND year = ?', params[:user_id], params[:year]])
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 9 2013,
+  # update all tabular
+  def update_all
+    params[:tabular].each do |key, val|
+      tabular = Tabular.find_by_id(key)
+      tabular.update_attribute(:total, val)
+    end
+    flash[:notice] = Flash.succcessfully_updated
+    redirect_to admin_tabulars_path
   end
 
   private

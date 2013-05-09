@@ -24,6 +24,10 @@
               <div class="content">
                 <%= master_tabular.name %>
               </div>
+              <div class="actions">
+                <%= link_to "Add", new_admin_master_tabular_path(:parent_id => master_tabular) %> |
+                <%= link_to "Destroy", admin_master_tabular_path(master_tabular), :confirm => "Are you sure?", :method => :delete %>
+              </div>
               <% master_tabular.descendants.to_depth(1).each do |child| %>
                 <div class="content">
                   <%= link_to child.name, admin_master_tabular_path(child), :class => "nested_master_tabulars" %>

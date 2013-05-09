@@ -90,12 +90,12 @@ class MasterTabular < ActiveRecord::Base
   # Created by [muhamadakbarbw@gmail.com] at March 29 2013,
   # to generate layout by year
   def self.generate_layout!(year)
-    parent_id = nil
-    User.all.each do |user|
-      self.all.each do |master_tabular|
-        parent_id = Tabular.find_by_name(master_tabular.parent.name).id rescue nil
+    ancestry_id = nil
+    self.all.each do |master_tabular|
+      User.all.each_with_index do |user, idx|
+        ancestry_id = Tabular.find_all_by_name_and_year(master_tabular.parent.name, year)[idx].id rescue nil
         Tabular.create(
-          name: master_tabular.name, year: year, parent_id: parent_id, user_id: user.id
+          name: master_tabular.name, year: year, parent_id: ancestry_id, user_id: user.id
         )
       end
     end

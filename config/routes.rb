@@ -67,7 +67,12 @@ Kecamatan::Application.routes.draw do
         post :generate_layout
       end
     end
-    resources :tabulars
+    resources :tabulars do
+      collection do
+        get :general_display
+        put :update_all
+      end
+    end
     resources :data_sources do
       collection do
         get :export

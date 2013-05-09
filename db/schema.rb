@@ -76,20 +76,18 @@ ActiveRecord::Schema.define(:version => 20130427163900) do
 
   create_table "tabulars", :force => true do |t|
     t.string   "name"
-    t.string   "roman_number"
-    t.string   "kind"
     t.float    "total"
     t.string   "year"
+    t.string   "ancestry"
+    t.integer  "ancestry_depth", :default => 0
     t.string   "unit_id"
-    t.integer  "parent_id"
     t.integer  "data_source_id"
     t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "tabulars", ["data_source_id"], :name => "index_tabulars_on_data_source_id"
-  add_index "tabulars", ["parent_id"], :name => "index_tabulars_on_parent_id"
   add_index "tabulars", ["unit_id"], :name => "index_tabulars_on_unit_id"
   add_index "tabulars", ["user_id"], :name => "index_tabulars_on_user_id"
 

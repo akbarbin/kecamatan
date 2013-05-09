@@ -1,0 +1,29 @@
+<div class="content">
+  <div class="page-header">
+    <div class="icon">
+      <span class="ico-layout-7"></span>
+    </div>
+    <h1>Master Tabular <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="block">
+        <div class="data-fluid">
+          <% @tabulars.each do |tabular|  %>
+            <div class="tabular">
+              <div class="content">
+                <%= tabular.name %>
+              </div>
+              <% tabular.descendants.to_depth(1).each do |child| %>
+                <div class="content">
+                  <%= link_to child.name, admin_tabular_path(child), :class => "nested_master_tabulars" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -59,8 +59,9 @@ ActiveRecord::Schema.define(:version => 20130427163900) do
     t.string   "unit_id"
     t.string   "ref_code"
     t.integer  "data_source_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.integer  "ancestry_depth", :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "master_tabulars", ["ancestry"], :name => "index_master_tabulars_on_ancestry"

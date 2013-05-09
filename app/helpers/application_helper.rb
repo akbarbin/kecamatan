@@ -25,4 +25,12 @@ module ApplicationHelper
       render(master_tabular) + content_tag(:div, nested_master_tabulars(sub_master_tabulars), :class => "nested_master_tabulars")
     end.join.html_safe
   end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 9 2013,
+  # to display error in line.
+  def nested_roots_master_tabulars(master_tabulars)
+    master_tabulars.map do |master_tabular, sub_master_tabulars|
+      render(master_tabular) + content_tag(:div, nested_master_tabulars(sub_master_tabulars), :class => "nested_master_tabulars")
+    end.join.html_safe
+  end
 end

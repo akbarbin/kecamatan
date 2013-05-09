@@ -7,6 +7,7 @@ class CreateMasterTabulars < ActiveRecord::Migration
       t.string :unit_id
       t.string :ref_code
       t.integer :data_source_id
+      t.integer :ancestry_depth, :default => 0
       t.timestamps
     end
     add_index :master_tabulars, :ancestry

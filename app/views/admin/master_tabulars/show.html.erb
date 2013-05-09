@@ -1,21 +1,21 @@
-<h2>Brand : <%= @brand.name %></h2>
-<div>
-  <table width="400px">
-    <thead style="text-align: center">
-      <tr>
-        <th>Categories</th>
-      </tr>
-    </thead>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.name, admin_brand_category_path(@brand, category) %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-<br/>
-<div>
-  <%= link_to "Add Category", new_admin_brand_category_path(@brand) %> |
-  <%= link_to "View all category", admin_brand_categories_path(@brand) %> |
-  <%= link_to "Back to brands", admin_brands_path %>
+<div class="content">
+  <div class="page-header">
+    <div class="icon">
+      <span class="ico-layout-7"></span>
+    </div>
+    <h1>Master Tabular <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
+  </div>
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="block">
+        <div class="head">
+          <h2><%= @master_tabular.name %></h2>          
+        </div>
+        <div class="data-fluid">
+          <%= link_to "Tambah data master tabular", new_admin_master_tabular_path(:parent_id => @master_tabular), :class => "btn" %>
+          <%= nested_master_tabulars(@master_tabulars.arrange(:order => :created_at)) %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

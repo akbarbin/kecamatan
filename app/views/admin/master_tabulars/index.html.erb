@@ -19,7 +19,18 @@
       </div>
       <div class="block">
         <div class="data-fluid">
-          <%= nested_master_tabulars(@master_tabulars.arrange(:order => :created_at)) %>
+          <% @master_tabulars.each do |master_tabular|  %>
+            <div class="master_tabular">
+              <div class="content">
+                <%= master_tabular.name %>
+              </div>
+              <% master_tabular.descendants.to_depth(1).each do |child| %>
+                <div class="content">
+                  <%= link_to child.name, admin_master_tabular_path(child), :class => "nested_master_tabulars" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

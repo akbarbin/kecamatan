@@ -1,12 +1,11 @@
 class Admin::MasterTabularsController < ApplicationController
   before_filter :require_login
   before_filter :prepare_data, only: [:index, :new, :create, :edit, :update]
-  before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child]
+  before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child, :show]
   layout "admin"
 
   def index
-    @master_tabulars = MasterTabular.scoped
-    @master_tabular = MasterTabular.new
+    @master_tabulars = MasterTabular.roots
   end
 
   def new
@@ -56,6 +55,7 @@ class Admin::MasterTabularsController < ApplicationController
   end
 
   def show
+    @master_tabulars = @master_tabular.descendants
   end
 
   # Created by [muhamadakbarbw@gmail.com] at March 29 2013,

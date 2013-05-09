@@ -6,7 +6,7 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # requires
-  has_ancestry
+  has_ancestry cache_depth: true
   #++
 
   #--

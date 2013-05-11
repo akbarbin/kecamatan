@@ -26,10 +26,30 @@ Kecamatan::Application.routes.draw do
   #   end
 
   ## routing user ##
-  get "dashboards/index"
+  resources :dashboards, only: [:index]
   resources :users
   resources :sessions
-
+  resources :tabulars do
+    collection do
+      get :general_display
+      put :update_all
+    end
+  end
+  resources :profile, :only => [:index] do
+    collection do
+      put :modify
+      get :edit_password
+      put :save_password
+    end
+  end
+  resources :data_sources do
+    collection do
+      get :export
+    end
+    member do
+      put :set_default
+    end
+  end
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales

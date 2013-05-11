@@ -10,26 +10,26 @@
     <![endif]-->
     <title>SIPD</title>
     <link rel="icon" type="image/ico" href="/assets/favicon.ico"/>
-
     <!--[if lte IE 7]>
         <link href="css/ie.css" rel="stylesheet" type="text/css" />
         <script type='text/javascript' src='/assets/plugins/other/lte-ie7.js'></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"  />
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "users", :media => "all" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div id="loader"><img src="/assets/loader.gif"/></div>
     <div class="wrapper">
-      <%= render 'shared/sidebar' %>
+      <%= render 'shared/user/sidebar' %>
       <div class="body">
         <%= render "shared/flash_message" %>
-        <%= render 'shared/navigation' %>
+        <%= render 'shared/user/navigation' %>
         <%= yield %>
       </div>
     </div>
     <div class="dialog" id="source" style="display: none;" title="Source"></div>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "users" %>
+    <%= yield :javascript %>
   </body>
 </html>

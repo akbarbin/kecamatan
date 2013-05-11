@@ -1,5 +1,5 @@
 class Admin::MasterTabularsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_admin_login
   before_filter :prepare_data, only: [:index, :new, :create, :edit, :update]
   before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child, :show]
   layout "admin"

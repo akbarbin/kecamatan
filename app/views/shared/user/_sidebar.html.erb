@@ -1,0 +1,19 @@
+<div class="sidebar">
+  <div class="top">
+    <a href="#" class="logo"></a>
+  </div>
+  <div class="nContainer">
+    <ul class="navigation bordered">
+      <li class="active"><%= link_to "Dashboard", admin_dashboards_path, :class => "blblue" %></li>
+      <li>
+        <%= link_to "Sign Out", session_path(current_user), :method => :delete, :class => "blorange" %>
+      </li>
+    </ul>
+    <a class="close">
+      <span class="ico-remove"></span>
+    </a>
+  </div>
+  <div class="widget">
+    <div class="datepicker"></div>
+  </div>
+</div>

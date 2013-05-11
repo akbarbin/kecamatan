@@ -28,7 +28,6 @@
 //= require plugins/uniform/jquery.uniform.min
 //= require plugins/fancybox/jquery.fancybox.pack
 //= require plugins/datatables/jquery.dataTables.min
-//= require plugins/treetable/jquery.treetable
 //= require plugins
 //= require charts
 //= require actions

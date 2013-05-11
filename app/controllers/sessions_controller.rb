@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       if user.admin?
         redirect_to admin_dashboards_path, notice: Flash.successfully_signed_in
       else
-        redirect_to dashboards_index_path, notice: Flash.successfully_signed_in
+        redirect_to dashboards_path, notice: Flash.successfully_signed_in
       end
     else
       flash.now[:error] = Flash.invalid_email_and_password

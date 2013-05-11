@@ -7,12 +7,35 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def require_login
-    if current_user.nil?
-      flash[:error] = Flash.not_permited_to_access_page
-      redirect_to root_path
+  # Created by [muhamadakbarbw@gmail.com] at April 21 2013,
+  # Authenticate user type for admin site
+  def require_admin_login
+    if current_user.nil? || !current_user.admin?
+      flash.now[:error] = Flash.not_permited_to_access_page
+      redirect_to "/404.html"
     else
       return current_user
+    end
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at April 21 2013,
+  # Authenticate user type for admin site
+  def require_user_login
+    if current_user.nil? || current_user.admin?
+      flash.now[:error] = Flash.not_permited_to_access_page
+      redirect_to "/404.html"
+    else
+      return current_user
+    end
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 11 2013,
+  # After login should be on dashboards
+  def redirect_to_dashboards
+    if current_user && current_user.admin?
+      redirect_to admin_dashboards_path
+    elsif current_user && current_user.user?
+      redirect_to dashboards_path
     end
   end
 

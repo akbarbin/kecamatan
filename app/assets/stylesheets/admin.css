@@ -10,8 +10,6 @@
  *
  *= require_self
  *= require stylesheets.css
- *= require treetable/jquery.treetable
- *= require treetable/screen
 */
 
 .nested_master_tabulars {

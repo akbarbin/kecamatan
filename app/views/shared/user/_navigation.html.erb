@@ -1,0 +1,81 @@
+<ul class="navigation">
+  <li>
+    <%= link_to dashboards_path, :class => "button" do %>
+      <div class="icon">
+        <span class="ico-monitor"></span>
+      </div>
+      <div class="name">Dashboard</div>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to "#", :class => "button yellow" do %>
+      <div class="arrow"></div>
+      <div class="icon">
+        <span class="ico-cog-2"></span>
+      </div>
+      <div class="name">Nilai Profile</div>
+    <% end %>
+    <ul class="sub">
+      <li><%= link_to "Data Tabular", tabulars_path %></li>
+    </ul>
+  </li>
+  <li>
+    <%= link_to data_sources_path, :class => "button green" do %>
+      <div class="arrow"></div>
+      <div class="icon">
+        <span class="ico-pen-2"></span>
+      </div>
+      <div class="name">Sumber Data</div>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to edit_password_profile_index_path, :class => "button red" do %>
+      <div class="icon">
+        <span class="ico-chart-4"></span>
+      </div>
+      <div class="name">Ganti Password</div>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to profile_index_path, :class => "button dblue" do %>
+      <div class="arrow"></div>
+      <div class="icon">
+        <span class="ico-layout-7"></span>
+      </div>
+      <div class="name">Edit Kontak</div>
+    <% end %>
+  </li>
+  <li>
+    <div class="user">
+      <%= current_user.image_user? ? image_tag(current_user.image_user_url(:thumb), :align => "left", :size => '32x32') : image_tag("avatar.gif", :size => '32x32', :align => "left") %>
+      <a href="#" class="name">
+        <span><%= current_user.name %></span>
+        <span class="sm"><%= current_user.role.name %></span>
+      </a>
+    </div>
+    <div class="buttons">
+      <div class="sbutton green navButton">
+        <a href="#"><span class="ico-align-justify"></span></a>
+      </div>
+      <div class="sbutton blue">
+        <a href="#"><span class="ico-cogs"></span></a>
+        <div class="popup">
+          <div class="arrow"></div>
+          <div class="row-fluid">
+            <div class="row-form">
+              <div class="span12"><strong>SETTINGS</strong></div>
+            </div>
+            <div class="row-form">
+              <div class="span4">Navigation:</div>
+              <div class="span8"><input type="radio" class="cNav" name="cNavButton" value="default"/> Default <input type="radio" class="cNav" name="cNavButton" value="bordered"/> Bordered</div>
+            </div>
+            <div class="row-form">
+              <div class="span4">Content:</div>
+              <div class="span8"><input type="radio" class="cCont" name="cContent" value=""/> Responsive <input type="radio" class="cCont" name="cContent" value="fixed"/> Fixed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

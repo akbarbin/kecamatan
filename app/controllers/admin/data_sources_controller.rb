@@ -1,5 +1,5 @@
 class Admin::DataSourcesController < ApplicationController
-  before_filter :require_login
+  before_filter :require_admin_login
   before_filter :find_data_source, only: [:edit, :update, :destroy, :set_default]
   layout "admin"
 

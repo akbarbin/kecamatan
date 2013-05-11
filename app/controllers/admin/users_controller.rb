@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  before_filter :require_login
+  before_filter :require_admin_login
   before_filter :find_user, only: [:edit, :update, :destroy]
   layout "admin"
 

@@ -46,7 +46,11 @@ class User < ActiveRecord::Base
 
   #--
   # validations
-  validates :password, presence: {on: :create}, confirmation: true
+  validates :name, presence: {message: Flash.required_presence},
+    uniqueness: {message: Flash.required_uniqueness}
+  validates :role_id, presence: {message: Flash.required_presence}
+  validates :password, presence: {on: :create, message: Flash.required_presence},
+    confirmation: true
   validates :email, presence: {message: Flash.required_presence},
     uniqueness: {message: Flash.required_uniqueness}
   #++
@@ -70,9 +74,27 @@ class User < ActiveRecord::Base
   class << self
     Role::ROLES.each do |role|
       define_method "all_#{role}" do
-        where(['role = ?', role])
+        where(['role_id = ? AND remove = ?', Role.find_by_name(role).id, false])
       end
     end
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 10 2013,
+  # search user.
+  def self.search(params)
+    return self.all_user unless params
+    conditions = []
+    params.each do |key, value|
+      if value.present?
+        case key
+        when "search"
+          conditions << "name LIKE '%#{value}%'"
+        else
+          conditions << key +"="+ value
+        end
+      end
+    end
+    self.all_user.where(conditions.join(" AND "))
   end
 
   # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
@@ -103,6 +125,13 @@ class User < ActiveRecord::Base
     define_method "#{role}?" do
       self.role.name == role
     end
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 11 2013,
+  # Move to trash when user was deleted
+  # for example: admin?
+  def move_to_trash
+    self.update_attribute(:remove, true)
   end
   #++
 

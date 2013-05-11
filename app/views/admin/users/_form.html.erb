@@ -1,0 +1,73 @@
+<div class="row-fluid">
+  <div class="span6">
+    <div class="block">
+      <div class="head">
+        <h2><%= title %></h2>
+      </div>
+      <div class="data-fluid">
+        <%= form_for user, :url => url do |f| %>
+          <div class="row-form">
+            <div class="span3"><%= f.label :name %><span>harus diisi</span></div>
+            <div class="span9"><%= f.text_field :name, :placeholder => "Isilah nama kecamatan" %></div>
+            <div class="span9"><%= display_error(user, :name) %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :email %><span>harus diisi</span></div>
+            <div class="span9"><%= f.text_field :email, :placeholder => "Isilah email" %></div>
+            <div class="span9"><%= display_error(user, :name) %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :password %><span>harus diisi</span></div>
+            <div class="span9"><%= f.password_field :password, :placeholder => "Isilah password" %></div>
+            <div class="span9"><%= display_error(user, :password) %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :password_confirmation %></div>
+            <div class="span9"><%= f.password_field :password_confirmation, :placeholder => "Isilah password konfimasi" %></div>
+            <div class="span9"><%= display_error(user, :password_confirmation) %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :alamat %><span>harus diisi</span></div>
+            <div class="span9"><%= f.text_field :address, :placeholder => "Isilah alamat" %></div>
+            <div class="span9"><%= display_error(user, :address) %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :role %><span>harus diisi</span></div>
+            <div class="span9"><%= f.select :role_id, options_for_select(GlobalClass.options_select(Role), user.role_id) %></div>
+            <div class="span9"><%= display_error(user, :role_id) %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :no_telp %></div>
+            <div class="span9"><%= f.text_field :telephone, :placeholder => "Isilah no telepone" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :fax %></div>
+            <div class="span9"><%= f.text_field :fax, :placeholder => "Isilah fax" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :website %></div>
+            <div class="span9"><%= f.text_field :website, :placeholder => "Isilah website telepone" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :remove_image_user %></div>
+            <div class="span9">
+              <%= f.check_box :remove_image_user %>
+            </div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :image %></div>
+            <div class="span9">
+              <%= image_tag(@user.image_user_url(:thumb)) if @user.image_user? %>
+              <%= f.file_field :image_user %>
+              <%= f.hidden_field :image_user_cache %>
+            </div>
+            <div class="span9"><%= display_error(user, :role_id) %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.submit name_button, :class => "btn" %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_hash
       t.string :password_salt
       t.string :image_user
+      t.boolean :remove, default: false
       t.integer :role_id
       t.timestamps
     end

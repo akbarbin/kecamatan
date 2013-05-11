@@ -107,9 +107,10 @@ ActiveRecord::Schema.define(:version => 20130427163900) do
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "image_user"
+    t.boolean  "remove",        :default => false
     t.integer  "role_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   add_index "users", ["role_id"], :name => "index_users_on_role_id"

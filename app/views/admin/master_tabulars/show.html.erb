@@ -9,7 +9,7 @@
     <div class="span12">
       <div class="block">
         <div class="head">
-          <h2><%= @master_tabular.name %></h2>          
+          <h2><%= @master_tabular.ref_code %> <%= @master_tabular.name %></h2>
         </div>
         <div class="data-fluid">
           <%= link_to "Tambah data master tabular", new_admin_master_tabular_path(:parent_id => @master_tabular), :class => "btn" %>
@@ -19,3 +19,4 @@
     </div>
   </div>
 </div>
+

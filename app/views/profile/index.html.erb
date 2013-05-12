@@ -1,0 +1,59 @@
+<div class="row-fluid">
+  <div class="span6">
+    <div class="block">
+      <div class="head">
+        <h2>Edit Profile</h2>
+      </div>
+      <div class="data-fluid">
+        <%= form_for @user, :url => modify_profile_index_path, :html => {:multipart => true} do |f| %>
+          <div class="row-form">
+            <div class="span3"><%= f.label :nama %></div>
+            <div class="span9"><%= f.text_field :name, :placeholder => "Isilah nama Anda" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :no_telp %></div>
+            <div class="span9"><%= f.text_field :telephone, :placeholder => "Isilah no telepone Anda" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :fax %></div>
+            <div class="span9"><%= f.text_field :fax, :placeholder => "Isilah fax Anda" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :email %></div>
+            <div class="span9"><%= f.text_field :email, :placeholder => "Isilah email Anda" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :website %></div>
+            <div class="span9"><%= f.text_field :website, :placeholder => "Isilah website telepone Anda" %></div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :image %></div>
+            <div class="span9">
+              <%= f.file_field :image_user %>
+              <%= f.hidden_field :image_user_cache %>
+            </div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.label :remove_image_user %></div>
+            <div class="span9">
+              <%= f.check_box :remove_image_user %>
+            </div>
+          </div>
+          <div class="row-form">
+            <div class="span3"><%= f.submit "Update", :class => "btn" %></div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <div class="block">
+      <div class="head">
+        <h2>Foto Anda</h2>
+      </div>
+      <div class="data-fluid">
+        <%= image_tag(@user.image_user_url(:thumb)) if @user.image_user? %>
+      </div>
+    </div>
+  </div>
+</div>

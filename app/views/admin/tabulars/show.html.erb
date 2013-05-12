@@ -11,12 +11,21 @@
   </div>
   <div class="row-fluid">
     <div class="span12">
+      <div class="span3">
+        <%= form_tag copy_from_year_admin_tabulars_path, :method => :put do %>
+          <%= label_tag :pilih_tahun %>
+          <%= select_year(Date.today, {:start_year => 1992, :end_year => Date.today.year - 1 }, {:name => "tabular[year]"}) %>
+          <%= submit_tag "Copy", :class => "btn" %>
+        <% end %>
+      </div>
+      <div class="span3">
+        <%= link_to "Edit", "#", :class => "btn edit-tabular" %>
+      </div>
       <div class="block">
         <div class="data-fluid">
-          <%= link_to "Edit", "#", :class => "btn edit-tabular" %>
           <%= form_for @tabular, :url => update_all_admin_tabulars_path, :html => {:method => :put} do |f| %>
-            <%= nested_tabulars(@user_tabulars.arrange(:order => :created_at), f: f) %>
-            <%= f.submit :class => "update-all-btn-tabular" %>
+            <%= nested_tabulars(@user_tabulars.arrange(:order => :created_at), :f => f) %>
+            <%= f.submit :class => "btn update-all-btn-tabular" %>
           <% end %>
         </div>
       </div>

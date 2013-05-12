@@ -22,11 +22,6 @@
             <div class="span9"><%= display_error(data_source, :address) %></div>
           </div>
           <div class="row-form">
-            <div class="span3"><%= f.label :kecamatan %></div>
-            <div class="span9"><%= select(:data_source, :user_id, @user_options) %></div>
-            <div class="span9"><%= display_error(data_source, :address) %></div>
-          </div>
-          <div class="row-form">
             <div class="span3"><%= f.submit name_button, :class => "btn" %></div>
           </div>
         <% end %>

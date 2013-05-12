@@ -79,6 +79,20 @@ class DataSource < ActiveRecord::Base
   def self.get_data
     all.map{|c| [c.name, c.telephone, c.address, c.user_name]}
   end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 11 2013,
+  # set default data source by user
+  def self.set_default(data_source)
+    data_source_default = DataSource.find_by_default_and_user_id(true, data_source.user_id)
+    if data_source_default.present?
+      if data_source.id != data_source_default.id
+        data_source.update_attribute(:default, true)
+        data_source_default.update_attribute(:default, false)
+      end
+    else
+      data_source.update_attribute(:default, true)
+    end
+  end
   #++
 
   #--

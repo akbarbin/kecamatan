@@ -41,12 +41,13 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # validations
-  validates :name, presence: {message: Flash.required_presence}
+  validates :name, presence: {message: Flash.required_presence},
+    uniqueness: {scope: :ancestry, message: Flash.required_uniqueness}
   #++
 
   #--
   # callback
-  #before_save :generate_ref_code!
+  before_save :generate_ref_code!
   #++
 
   #--
@@ -69,11 +70,11 @@ class MasterTabular < ActiveRecord::Base
   #--
   # private class methods
   def generate_ref_code!
-    if self.parent_id.blank?
-      count_child_parent = MasterTabular.where(["parent_id IS NULL"]).count
+    if self.ancestry.blank?
+      count_child_parent = MasterTabular.where(["ancestry IS NULL"]).count
       self.ref_code = "#{count_child_parent + 1}."
     else
-      ref_code_parent = MasterTabular.find_by_id(self.parent_id).ref_code
+      ref_code_parent = self.parent.ref_code
       count_child_parent = MasterTabular.where('ref_code LIKE ?', "#{ref_code_parent}%").count - 1
       self.ref_code = "#{ref_code_parent}#{count_child_parent + 1}."
     end

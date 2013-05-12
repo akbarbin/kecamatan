@@ -53,6 +53,9 @@ class Tabular < ActiveRecord::Base
 
   #--
   # scopes
+  scope :by_year_and_user_id, lambda {
+    |year, user_id| where(['year = ? AND user_id = ?', year, user_id])
+  }
   #++
 
   #--
@@ -77,6 +80,20 @@ class Tabular < ActiveRecord::Base
       end
     end
     where(conditions.join(" AND "))
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 11 2013,
+  # Copy tabular from last year
+  def self.copy_from_year(year, user)
+    tabulars = self.by_year_and_user_id(year, user.id)
+    tabulars.each do |tabular|
+      current_tabulars = self.by_year_and_user_id(Date.today.year, user.id)
+      current_tabulars.each do |current_tabular|
+        if current_tabular.name == tabular.name
+          current_tabular.update_attribute(:total, tabular.total)
+        end
+      end
+    end
   end
   #++
 

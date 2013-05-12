@@ -5,17 +5,15 @@
     </div>
     <h1>Kelompok Data <small>ADMINISTRASI SISTEM INFORMASI PEMBANGUNAN DAERAH</small></h1>
   </div>
-  <%= form_tag admin_data_sources_path, :method => 'get' do %>
+  <%= form_tag data_sources_path, :method => 'get' do %>
     <%= text_field_tag "data_source[search]" %>
-    <%= label_tag :pilih_kecamatan %>
-    <%= select("data_source", :user_id, @user_options) %>
     <%= submit_tag "Search", :name => nil %>
   <% end %>
   <div class="row-fluid">
     <div class="span12">
       <div class="span3">
-        <a id="add-data" href="/admin/data_sources/new" class="btn btn-large btn-block btn-warning" type="button">Tambah data tabular</a>
-        <%= link_to "Import excle", export_admin_data_sources_path, :class => "btn" %>
+        <a id="add-data" href="/data_sources/new" class="btn btn-large btn-block btn-warning" type="button">Tambah data source</a>
+        <%= link_to "Import excle", export_data_sources_path, :class => "btn" %>
       </div>
       <div class="block">
         <div class="data-fluid">
@@ -52,7 +50,7 @@
                     <%= idx + 1 %>
                   </td>
                   <td>
-                    <%= link_to data_source.name, admin_data_source_path(data_source) %>
+                    <%= link_to data_source.name, data_source_path(data_source) %>
                   </td>
                   <td>
                     <%= data_source.telephone rescue "-" %>
@@ -65,12 +63,12 @@
                   </td>
                   <td>
                     <% unless data_source.default? %>
-                      <%= link_to "Set Default", set_default_admin_data_source_path(data_source), :method => :put, :class => "label label-success" %>
+                      <%= link_to "Set Default", set_default_data_source_path(data_source), :method => :put, :class => "label label-success" %>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to "Edit", edit_admin_data_source_path(data_source), :id => data_source.id %>
-                    <%= link_to "Delete", admin_data_source_path(data_source), :method => :delete, :confirm => "Are you sure to delete this?" %>
+                    <%= link_to "Edit", edit_data_source_path(data_source), :id => data_source.id %>
+                    <%= link_to "Delete", data_source_path(data_source), :method => :delete, :confirm => "Are you sure to delete this?" %>
                   </td>
                 </tr>
               <% end %>

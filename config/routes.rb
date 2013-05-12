@@ -91,6 +91,7 @@ Kecamatan::Application.routes.draw do
       collection do
         get :general_display
         put :update_all
+        put :copy_from_year
       end
     end
     resources :data_sources do

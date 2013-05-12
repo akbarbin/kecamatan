@@ -78,6 +78,14 @@ class Admin::TabularsController < ApplicationController
     redirect_to admin_tabulars_path
   end
 
+  # Created by [muhamadakbarbw@gmail.com] at May 11 2013,
+  # copy from last year.
+  def copy_from_year
+    Tabular.copy_from_year(params[:tabular][:year], current_user)
+    flash[:notice] = Flash.succcessfully_updated
+    redirect_to admin_tabulars_path
+  end
+
   private
   def find_tabular
     @tabular = Tabular.find_by_id(params[:id])

@@ -15,7 +15,7 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # attribute
-  attr_accessible :name, :unit_id, :parent_id, :kind, :parent
+  attr_accessible :name, :unit_id, :parent_id, :kind, :parent, :ancestry
   #++
 
   #--
@@ -41,8 +41,8 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # validations
-  validates :name, presence: {message: Flash.required_presence},
-    uniqueness: {scope: :ancestry, message: Flash.required_uniqueness}
+#  validates :name, presence: {message: Flash.required_presence},
+#    uniqueness: {scope: :ancestry, message: Flash.required_uniqueness}
   #++
 
   #--

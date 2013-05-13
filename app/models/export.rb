@@ -16,4 +16,38 @@ class Export
     file = report.write path
     return {:filepath => path, :status => File.readable?(path)}
   end
+
+  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
+  # Export dummy data
+  def self.export(excel, remove_after = false)
+    workbook = Spreadsheet.open(excel)
+    data = workbook.worksheet 0
+    id = data.row(2)[1]
+    rows = data.row_count - 1
+    rows.times do |i|
+      columns = data.row(i+7)
+      next if columns[0].blank?
+      ancestry = Export.get_space(columns[0], id)
+#      MasterTabular.create(
+#        name: columns[0],
+#        ancestry: ancestry
+#      )
+    end
+    FileUtils.rm(excel) if remove_after
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
+  # get space name to determine ancestry.
+  def self.get_space(name, id)
+    ancestry = ""
+    size = name.scan(/\s/).size
+    puts size
+#    case size
+#    when 7
+#      ancestry = id
+#    else
+#      ancestry = 1
+#    end
+#    ancestry
+  end
 end

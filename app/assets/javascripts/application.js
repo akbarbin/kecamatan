@@ -12,6 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require admin/data_sources
 //= require actions
 //= require reseter

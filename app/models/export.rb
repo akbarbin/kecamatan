@@ -1,7 +1,7 @@
 class Export
   
   # Created by [muhamadakbarbw@gmail.com] at April 16 2013,
-  # to generate to excel document
+  # to generate to excel document.
   def self.generate(opts = {})
     report = Spreadsheet::Workbook.new
     sheet = report.create_worksheet
@@ -44,13 +44,21 @@ class Export
     rows = data.row_count - 1
     parent_id = []
     parent_id[0] = nil
+    units = {}
+    Unit.all.each {|unit| units[unit.name] = unit.id}
+
     rows.times do |i|
       columns = data.row(i+2)
       4.times do |j|
         if columns[j+1].present?
+          unit = nil
+          if units[columns[12]].present?
+            unit = units[columns[12]]
+          end
           tabular = MasterTabular.create(
             name: columns[j+1],
-            parent_id: parent_id[j]
+            parent_id: parent_id[j],
+            unit_id: unit
           )
           parent_id[j+1] = tabular.id
           break
@@ -65,13 +73,5 @@ class Export
   def self.get_space(name, id)
     ancestry = ""
     size = name.scan(/\s/).size
-    puts size
-    #    case size
-    #    when 7
-    #      ancestry = id
-    #    else
-    #      ancestry = 1
-    #    end
-    #    ancestry
   end
 end

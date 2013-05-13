@@ -1,10 +1,11 @@
-<div class="master_tabular">
-  <div class="content">
-    <%= master_tabular.ref_code %>
-    <%= link_to master_tabular.name, admin_master_tabular_path(master_tabular) %>
-  </div>
-  <div class="actions">
+<% padding = (master_tabular.ancestry_depth - 1) * 15 %>
+<tr>
+  <td style="padding-left: <%= padding  %>px; ">
+    <span style="display: inline-block;min-width: 50px;"><%= master_tabular.ref_code %></span>
+    <span style="display: inline-block;margin-left: 15px;"><%= link_to master_tabular.name, admin_master_tabular_path(master_tabular) %></span>
+  </td>
+  <td>
     <%= link_to "Add", new_admin_master_tabular_path(:parent_id => master_tabular) %> |
     <%= link_to "Destroy", admin_master_tabular_path(master_tabular), :confirm => "Are you sure?", :method => :delete %>
-  </div>
-</div>
+  </td>
+</tr>

@@ -13,8 +13,20 @@
         </div>
         <div class="data-fluid">
           <%= link_to "Tambah data master tabular", new_admin_master_tabular_path(:parent_id => @master_tabular), :class => "btn" %>
-          <table class="bordered">
-          <%= nested_master_tabulars(@master_tabulars.arrange(:order => :created_at)) %>
+          <table cellpadding="0" cellspacing="0" width="100%" class="table">
+            <thead>
+              <tr>
+                <th width="25%">
+                  Nama Sumber Data
+                </th>
+                <th width="25%">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= nested_master_tabulars(@master_tabulars.arrange(:order => :created_at)) %>
+            </tbody>
           </table>
         </div>
       </div>

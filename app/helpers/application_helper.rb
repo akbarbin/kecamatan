@@ -22,7 +22,7 @@ module ApplicationHelper
   # nested master tabulars
   def nested_master_tabulars(master_tabulars)
     master_tabulars.map do |master_tabular, sub_master_tabulars|
-      render(master_tabular) + content_tag(:td, nested_master_tabulars(sub_master_tabulars))
+      render(master_tabular) + nested_master_tabulars(sub_master_tabulars)
     end.join.html_safe
   end
 

@@ -5,7 +5,7 @@ class Admin::MasterTabularsController < ApplicationController
   layout "admin"
 
   def index
-    @master_tabulars = MasterTabular.roots
+    @master_tabulars = MasterTabular.where(["ancestry_depth IN (?)", [0,1]])
   end
 
   def new

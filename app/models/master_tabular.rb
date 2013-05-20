@@ -20,6 +20,7 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # extra capabilities
+  delegate :name, to: :unit, prefix: true
   #++
 
   #--
@@ -41,8 +42,8 @@ class MasterTabular < ActiveRecord::Base
 
   #--
   # validations
-#  validates :name, presence: {message: Flash.required_presence},
-#    uniqueness: {scope: :ancestry, message: Flash.required_uniqueness}
+  #  validates :name, presence: {message: Flash.required_presence},
+  #    uniqueness: {scope: :ancestry, message: Flash.required_uniqueness}
   #++
 
   #--
@@ -93,7 +94,7 @@ class MasterTabular < ActiveRecord::Base
   def self.generate_layout!(year)
     ancestry_id = nil
     self.all.each do |master_tabular|
-      User.all.each_with_index do |user, idx|
+      User.limit(1).each_with_index do |user, idx|
         ancestry_id = Tabular.find_all_by_name_and_year(master_tabular.parent.name, year)[idx].id rescue nil
         Tabular.create(
           name: master_tabular.name, year: year, parent_id: ancestry_id, user_id: user.id

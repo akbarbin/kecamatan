@@ -93,6 +93,10 @@ Kecamatan::Application.routes.draw do
         put :update_all
         put :copy_from_year
       end
+      member do
+        post :import
+        get :export
+      end
     end
     resources :data_sources do
       collection do

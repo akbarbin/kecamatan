@@ -1,5 +1,16 @@
-<div class="tabular">
-  <div class="content">
-    <%= tabular.name %><%= text_field_tag "tabular[#{tabular.id}]", tabular.total.to_i, :class => "field-tabular" %>
-  </div>
-</div>
+<% padding = (tabular.ancestry_depth) * 15 %>
+<tr>
+  <td style="padding-left: <%= padding  %>px;">
+    <span style="display: inline-block;margin-left: 15px;"><%= link_to tabular.name, admin_tabular_path(tabular) %></span>
+  </td>
+  <td>
+    <span class="tabular-total"><%= tabular.total %></span>
+    <%= text_field_tag "tabular[#{tabular.id}]", tabular.total.to_i, :class => "field-tabular" %>
+  </td>
+  <td>
+    <%= tabular.unit.present? ? tabular.unit.name : "-" %>
+  </td>
+  <td>
+    <%= tabular.data_source_id.present? ? tabular.data_source_name : "-" %>
+  </td>
+</tr>

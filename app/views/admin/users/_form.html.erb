@@ -5,7 +5,7 @@
         <h2><%= title %></h2>
       </div>
       <div class="data-fluid">
-        <%= form_for user, :url => url do |f| %>
+        <%= form_for user, :url => url, :html => {:multipart => true} do |f| %>
           <div class="row-form">
             <div class="span3"><%= f.label :name %><span>harus diisi</span></div>
             <div class="span9"><%= f.text_field :name, :placeholder => "Isilah nama kecamatan" %></div>
@@ -61,7 +61,7 @@
               <%= f.file_field :image_user %>
               <%= f.hidden_field :image_user_cache %>
             </div>
-            <div class="span9"><%= display_error(user, :role_id) %></div>
+            <div class="span9"><%= display_error(user, :image_user) %></div>
           </div>
           <div class="row-form">
             <div class="span3"><%= f.submit name_button, :class => "btn" %></div>

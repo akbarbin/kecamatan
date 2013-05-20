@@ -33,6 +33,10 @@ class Flash
     "berhasil sign out."
   end
 
+  def self.successfully_imported
+    "berhasil import data."
+  end
+
   # failed
   def self.failed_created
     "gagal dibuat."
@@ -46,6 +50,9 @@ class Flash
     "gagal dihapus."
   end
 
+  def self.failed_imported
+    "gagal import data."
+  end
   # invalid
   def self.invalid_email_and_password
     "Invalid email or password."

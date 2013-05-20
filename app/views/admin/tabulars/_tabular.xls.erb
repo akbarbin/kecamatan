@@ -1,0 +1,12 @@
+<% padding = (tabular.ancestry_depth) * 15 %>
+<tr>
+  <td>
+    <%= "#{(" " * padding)} #{(tabular.name)}" %>
+  </td>
+  <td>
+    <%= tabular.total %>
+  </td>
+  <td>
+    <%= tabular.unit_name rescue "-" %>
+  </td>
+</tr>

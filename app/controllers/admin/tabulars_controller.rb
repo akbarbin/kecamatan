@@ -1,6 +1,7 @@
 class Admin::TabularsController < ApplicationController
   before_filter :require_admin_login
-  before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child, :show]
+  before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child, :show,
+    :import, :export]
   before_filter :prepare_data, only: [:new, :create, :edit, :update]
   layout "admin"
 
@@ -10,61 +11,19 @@ class Admin::TabularsController < ApplicationController
     .paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
   end
 
-  def new
-    @tabular = Tabular.new
-  end
-
-  def create
-    @tabular = Tabular.new(params[:tabular])
-    respond_to do |format|
-      if @tabular.save
-        record_history("#{current_user.name} membuat data tabular dengan nama #{@tabular.name}")
-        flash[:notice] = Flash.successfully_created
-        format.html { redirect_to admin_tabulars_path }
-        format.js { render :js => "window.location.href = ('#{admin_tabulars_path}');" }
-      else
-        flash[:error] = Flash.failed_created
-        format.html { render :new }
-        format.js
-      end
-    end
-  end
-
-  def edit
-    render layout: false
-  end
-
-  def update
-    respond_to do |format|
-      if @tabular.update_attributes(params[:tabular])
-        record_history("#{current_user.name} merubah data tabular dengan nama #{@tabular.name}")
-        flash[:notice] = Flash.succcessfully_updated
-        format.html { redirect_to admin_tabulars_path }
-        format.js
-      else
-        flash[:error] = Flash.failed_updated
-        format.html { render :edit }
-        format.js
-      end
-    end
-  end
-
-  def destroy
-    if @tabular.destroy
-      record_history("#{current_user.name} menghapus data tabular dengan nama #{@tabular.name}")
-      flash[:notice] = Flash.successfully_deleted
-      redirect_to admin_tabulars_path
-    end
-  end
-
   def show
     @user_tabulars = @tabular.descendants
+    filename = "data_tabular_#{@tabular.name}_kecamatan #{@tabular.user_name}_#{@tabular.year}.xls"
+    respond_to do |format|
+      format.html
+      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
+    end
   end
 
   # Created by [muhamadakbarbw@gmail.com] at May 9 2013,
   # general display
   def general_display
-    @tabulars = Tabular.roots.where(['user_id = ? AND year = ?', params[:user_id], params[:year]])
+    @tabulars = Tabular.where(['ancestry_depth IN (?) AND user_id = ? AND year = ?', [0,1], params[:user_id], params[:year]])
   end
 
   # Created by [muhamadakbarbw@gmail.com] at May 9 2013,
@@ -84,6 +43,30 @@ class Admin::TabularsController < ApplicationController
     Tabular.copy_from_year(params[:tabular][:year], current_user)
     flash[:notice] = Flash.succcessfully_updated
     redirect_to admin_tabulars_path
+  end
+
+  # Created by [muhamadakbarbw@gmail.com] at May 20 2013,
+  # export excel
+  def export
+    file = Export.export({object: @tabular, year: @tabular.year, user: @tabular.user})
+    send_file file[:filepath]
+  end
+
+  # Created by: [muhamadakbarbw@gmail.com] at May 19 2013,
+  # title: Import excel from user by data tabular
+  # input: excel, year, user, total
+  # process: get and update the tabular by input
+  # output : total will be update with same format excel and database
+  def import
+    result = Export.upload_excel(params[:tabular], false)
+    if result[:status]
+      Export.import_value({object: @tabular, path: result[:path], user: @tabular.user})
+      flash[:notice] = Flash.successfully_imported
+      redirect_to admin_tabular_path(@tabular)
+    else
+      flash.now[:error] = Flash.failed_imported
+      redirect_to admin_tabular_path(@tabular)
+    end
   end
 
   private

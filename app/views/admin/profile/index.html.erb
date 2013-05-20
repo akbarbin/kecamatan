@@ -9,10 +9,12 @@
           <div class="row-form">
             <div class="span3"><%= f.label :nama %></div>
             <div class="span9"><%= f.text_field :name, :placeholder => "Isilah nama Anda" %></div>
+            <div class="span9"><%= display_error(@user, :name) %></div>
           </div>
           <div class="row-form">
             <div class="span3"><%= f.label :no_telp %></div>
             <div class="span9"><%= f.text_field :telephone, :placeholder => "Isilah no telepone Anda" %></div>
+            <div class="span9"><%= display_error(@user, :name) %></div>
           </div>
           <div class="row-form">
             <div class="span3"><%= f.label :fax %></div>
@@ -21,6 +23,7 @@
           <div class="row-form">
             <div class="span3"><%= f.label :email %></div>
             <div class="span9"><%= f.text_field :email, :placeholder => "Isilah email Anda" %></div>
+            <div class="span9"><%= display_error(@user, :email) %></div>
           </div>
           <div class="row-form">
             <div class="span3"><%= f.label :website %></div>
@@ -32,6 +35,7 @@
               <%= f.file_field :image_user %>
               <%= f.hidden_field :image_user_cache %>
             </div>
+            <div class="span9"><%= display_error(@user, :image_user) %></div>
           </div>
           <div class="row-form">
             <div class="span3"><%= f.label :remove_image_user %></div>

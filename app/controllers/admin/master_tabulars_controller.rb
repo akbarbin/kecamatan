@@ -56,6 +56,10 @@ class Admin::MasterTabularsController < ApplicationController
 
   def show
     @master_tabulars = @master_tabular.descendants
+    respond_to do |format|
+      format.html
+      format.xls
+    end
   end
 
   # Created by [muhamadakbarbw@gmail.com] at March 29 2013,

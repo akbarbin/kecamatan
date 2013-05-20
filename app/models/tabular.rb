@@ -16,11 +16,12 @@ class Tabular < ActiveRecord::Base
   #--
   # attribute
   attr_accessible :name, :user_id, :total, :data_source_id, :year, :ancestry,
-    :ancestry_depth, :parent_id
+    :ancestry_depth, :parent_id, :file
   #++
 
   #--
   # extra capabilities
+  mount_uploader :file, FileExportUploader
   #++
 
   #--

@@ -1,0 +1,12 @@
+<% padding = (master_tabular.ancestry_depth) * 15 %>
+<tr>
+  <td>
+    <%= "#{master_tabular.ref_code} #{(" " * padding)} #{(master_tabular.name)}" %>
+  </td>
+  <td>
+    <%= master_tabular.value %>
+  </td>
+  <td>
+    <%= master_tabular.unit_name rescue "-" %>
+  </td>
+</tr>

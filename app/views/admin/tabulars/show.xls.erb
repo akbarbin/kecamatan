@@ -1,0 +1,36 @@
+<table>
+  <tbody>
+    <tr>
+      <td>Kecamatan</td>
+      <td><%= @tabular.user_name %></td>
+    </tr>
+    <tr>
+      <td>Jenis Data</td>
+      <td><%= @tabular.name %></td>
+    </tr>
+    <tr>
+      <td>Tahun</td>
+      <td><%= @tabular.year %></td>
+    </tr>
+    <tr>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Nama Sumber Data
+      </th>
+      <th>
+        Value
+      </th>
+      <th>
+        Satuan
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= nested_master_tabulars(@user_tabulars.arrange(:order => :created_at)) %>
+  </tbody>
+</table>

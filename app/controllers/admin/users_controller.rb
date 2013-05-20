@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = Flash.succcessfully_updated
       redirect_to admin_users_path
     else
-      flash[:error] = Flash.update_data_failed
+      flash[:error] = Flash.failed_updated
       render "edit"
     end
   end

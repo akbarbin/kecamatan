@@ -5,6 +5,9 @@
     <span style="display: inline-block;margin-left: 15px;"><%= link_to master_tabular.name, admin_master_tabular_path(master_tabular) %></span>
   </td>
   <td>
+    <%= master_tabular.unit.present? ? master_tabular.unit.name : "-" %>
+  </td>
+  <td>
     <%= link_to "Add", new_admin_master_tabular_path(:parent_id => master_tabular) %> |
     <%= link_to "Destroy", admin_master_tabular_path(master_tabular), :confirm => "Are you sure?", :method => :delete %>
   </td>

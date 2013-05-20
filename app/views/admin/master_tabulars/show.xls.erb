@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>
+        Nama Sumber Data
+      </th>
+      <th>
+        Value
+      </th>
+      <th>
+        Satuan
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= nested_master_tabulars(@master_tabulars.arrange(:order => :created_at)) %>
+  </tbody>
+</table>

@@ -5,7 +5,8 @@
   </td>
   <td>
     <span class="tabular-total"><%= tabular.total %></span>
-    <%= text_field_tag "tabular[#{tabular.id}]", tabular.total.to_i, :class => "field-tabular" %>
+    <%= text_field_tag "tabular[#{tabular.id}][val]", tabular.total.to_i, :class => "field-tabular" %>
+    <%= hidden_field_tag "tabular[#{tabular.id}][old_val]", tabular.total.to_i, :class => "field-tabular" %>
   </td>
   <td>
     <%= tabular.unit.present? ? tabular.unit.name : "-" %>

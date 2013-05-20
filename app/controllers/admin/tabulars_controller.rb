@@ -30,8 +30,10 @@ class Admin::TabularsController < ApplicationController
   # update all tabular
   def update_all
     params[:tabular].each do |key, val|
-      tabular = Tabular.find_by_id(key)
-      tabular.update_attribute(:total, val)
+      if val[:val] != val[:old_val]
+        tabular = Tabular.find_by_id(key)
+        tabular.update_attribute(:total, val[:val])
+      end
     end
     flash[:notice] = Flash.succcessfully_updated
     redirect_to admin_tabulars_path

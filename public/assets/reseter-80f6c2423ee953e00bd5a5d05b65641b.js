@@ -1,0 +1,1 @@
+function resetForm(e){e.find("input:text, input:password, input:file, select, textarea").val(""),e.find("input:radio, input:checkbox").removeAttr("checked").removeAttr("selected")}

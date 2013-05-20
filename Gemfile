@@ -25,7 +25,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
@@ -57,3 +57,4 @@ gem 'spreadsheet', '0.8.4'
 #gem 'acts_as_tree', '1.2.0'
 #gem 'awesome_nested_set'
 gem 'ancestry'
+gem 'roo'

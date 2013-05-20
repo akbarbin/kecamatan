@@ -252,7 +252,7 @@ div.checker span {
 
 div.checker input {
   opacity: 0;
-  filter: alpha(opacity:0);  
+  /*filter: alpha(opacity:0); */
   background: none;
   margin: 0px;
   display: block;
@@ -272,7 +272,7 @@ div.radio span {
 
 div.radio input {
   opacity: 0;
-  filter: alpha(opacity:0);
+  /*filter: alpha(opacity:0); */
   text-align: center;
   background: none;
   float: none !important;

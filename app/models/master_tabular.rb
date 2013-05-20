@@ -94,7 +94,7 @@ class MasterTabular < ActiveRecord::Base
   def self.generate_layout!(year)
     ancestry_id = nil
     self.all.each do |master_tabular|
-      User.limit(1).each_with_index do |user, idx|
+      User.all.each_with_index do |user, idx|
         ancestry_id = Tabular.find_all_by_name_and_year(master_tabular.parent.name, year)[idx].id rescue nil
         Tabular.create(
           name: master_tabular.name, year: year, parent_id: ancestry_id, user_id: user.id

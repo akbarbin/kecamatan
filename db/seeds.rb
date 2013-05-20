@@ -41,3 +41,6 @@ User.create!(
   website: "citradarma.com", password: "12345", password_confirmation: "12345",
   role_id: Role.find_by_name(Role::USER).id
 )
+
+# export excel
+Export.import("#{Rails.root}/db/files/sipd.xls", false)

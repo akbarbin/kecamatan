@@ -9,25 +9,35 @@
 #  pool: 5
 #  timeout: 10000
 
+#development:
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: sipd_development
+#  pool: 5
+#  username: root
+#  password: '12345678'
+#  # socket: /tmp/mysql.sock
+
+login: &login
+ adapter: postgresql
+ username: postgres
+ password: postgres
+ host: localhost
+ port: 5432
+ min_messages: warning
+
 development:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
   database: sipd_development
-  pool: 5
-  username: root
-  password: '12345678'
-  # socket: /tmp/mysql.sock
+  <<: *login
+
+test:
+  database: sipd_test
+  <<: *login
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: production_development
-  pool: 5
-  username: root
-  password: '12345678'
-  # socket: /tmp/mysql.sock
+  database: sipd_production
+  <<: *login
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

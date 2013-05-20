@@ -23,7 +23,7 @@
         <%= link_to "Export", export_admin_tabular_path(@tabular), :class => "btn" %>
         <%= form_tag import_admin_tabular_path(@tabular), :method => :post, :multipart => true do %>
           <%= file_field_tag "tabular[file]" %>
-          <%= submit_tag "Import" %>
+          <%= submit_tag "Import", :class => "btn" %>
         <% end %>
       </div>
       <div class="block">

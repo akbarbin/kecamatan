@@ -3,20 +3,18 @@ class Admin::TabularsController < ApplicationController
   before_filter :find_tabular, only: [:edit, :update, :destroy, :add_child, :show,
     :import, :export]
   before_filter :prepare_data, only: [:new, :create, :edit, :update]
+  before_filter :validate_excel, only: [:import]
   layout "admin"
 
   def index
     @user_options = GlobalClass.options_select(User)
-    @tabulars = Tabular.search(params[:tabular]).includes(:user).group(:year, :user_id)
-    .paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
+    @tabulars = Tabular.search(params[:tabular]).select([:year, :user_id]).joins(:user).group([:year, :user_id]).paginate(per_page: DEFAULT_PER_PAGE, page: params[:page])
   end
 
   def show
     @user_tabulars = @tabular.descendants
-    filename = "data_tabular_#{@tabular.name}_kecamatan #{@tabular.user_name}_#{@tabular.year}.xls"
     respond_to do |format|
       format.html
-      format.xls { headers["Content-Disposition"] = "attachment; filename=\"#{filename}\"" }
     end
   end
 
@@ -84,5 +82,12 @@ class Admin::TabularsController < ApplicationController
     @unit_options = GlobalClass.options_select(Unit)
     @options_data_sources = GlobalClass.options_select(DataSource) # change to data_source_options
     @tabular_options = GlobalClass.options_select(Tabular)
+  end
+
+  def validate_excel
+    if params[:tabular].blank?
+      flash.now[:error] = Flash.failed_imported
+      redirect_to admin_tabular_path(@tabular)
+    end
   end
 end

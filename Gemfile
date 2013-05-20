@@ -9,7 +9,8 @@ group :development do
 #  gem 'sqlite3', '1.3.7'
   gem 'annotate', ">=2.5.0"
   gem 'rails_best_practices'
-  gem 'mysql2'
+  gem 'pg', '0.15.1'
+#  gem 'mysql2'
 end
 
 group :production do

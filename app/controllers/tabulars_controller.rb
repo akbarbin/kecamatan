@@ -5,7 +5,7 @@ class TabularsController < ApplicationController
   layout "user"
 
   def index
-    @tabulars = Tabular.roots.where(['user_id = ? AND year = ?', current_user.id, Date.today.year])
+    @tabulars = Tabular.roots.where(['user_id = ? AND year = ?', current_user.id, "#{Date.today.year}"])
   end
 
   def destroy
@@ -24,8 +24,10 @@ class TabularsController < ApplicationController
   # update all tabular
   def update_all
     params[:tabular].each do |key, val|
-      tabular = Tabular.find_by_id(key)
-      tabular.update_attribute(:total, val)
+      if val[:val] != val[:old_val]
+        tabular = Tabular.find_by_id(key)
+        tabular.update_attribute(:total, val[:val])
+      end
     end
     flash[:notice] = Flash.succcessfully_updated
     redirect_to tabulars_path

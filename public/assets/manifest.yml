@@ -161,8 +161,8 @@
 !binary "d3BvaW50OC9pbmRleC5wbmc=": wpoint8-42f14fe0db0516c1014cf74dabfa9f39.png
 !binary "YWN0aW9ucy5qcw==": actions-19f9e09d70d8221dc140d9be702cf875.js
 !binary "YWN0aW9ucy9pbmRleC5qcw==": actions-19f9e09d70d8221dc140d9be702cf875.js
-!binary "YWRtaW4uanM=": admin-fb4b8da1711ed4e759a5eb884a90cf80.js
-!binary "YWRtaW4vaW5kZXguanM=": admin-fb4b8da1711ed4e759a5eb884a90cf80.js
+!binary "YWRtaW4uanM=": admin-622d91d43f0fa4430ce9189ed78fb2d2.js
+!binary "YWRtaW4vaW5kZXguanM=": admin-622d91d43f0fa4430ce9189ed78fb2d2.js
 !binary "YXBwbGljYXRpb24uanM=": application-00a276243b4935e95ed71540f9f157ad.js
 !binary "YXBwbGljYXRpb24vaW5kZXguanM=": application-00a276243b4935e95ed71540f9f157ad.js
 !binary "Y2hhcnRzLmpz": charts-8fe6ef6b7d4011068b36937a5171cb72.js
@@ -171,6 +171,8 @@
 !binary "ZGFzaGJvYXJkcy9pbmRleC5qcw==": dashboards-1b13569e9620782f423d4cd3ce931750.js
 !binary "ZGF0YV9zb3VyY2VzLmpz": data_sources-1b13569e9620782f423d4cd3ce931750.js
 !binary "ZGF0YV9zb3VyY2VzL2luZGV4Lmpz": data_sources-1b13569e9620782f423d4cd3ce931750.js
+!binary "Z2xvYmFsLmpz": global-81835c9d9e280bd3e9daa42e0df1506c.js
+!binary "Z2xvYmFsL2luZGV4Lmpz": global-81835c9d9e280bd3e9daa42e0df1506c.js
 !binary "anF1ZXJ5LXVpLmpz": jquery-ui-126a954967a08ecc00050bb5ab1ce247.js
 !binary "anF1ZXJ5LXVpL2luZGV4Lmpz": jquery-ui-126a954967a08ecc00050bb5ab1ce247.js
 !binary "cGFnZXMuanM=": pages-1b13569e9620782f423d4cd3ce931750.js
@@ -305,10 +307,10 @@
 !binary "cmVzZXRlci9pbmRleC5qcw==": reseter-80f6c2423ee953e00bd5a5d05b65641b.js
 !binary "dGFidWxhcnMuanM=": tabulars-1b13569e9620782f423d4cd3ce931750.js
 !binary "dGFidWxhcnMvaW5kZXguanM=": tabulars-1b13569e9620782f423d4cd3ce931750.js
-!binary "dGVzdGluZy5qcw==": testing-7d9db4b9be30744b973710a199deabb6.js
-!binary "dGVzdGluZy9pbmRleC5qcw==": testing-7d9db4b9be30744b973710a199deabb6.js
-!binary "dXNlcnMuanM=": users-ff104f040d4cd7f1948080d103ae8f88.js
-!binary "dXNlcnMvaW5kZXguanM=": users-ff104f040d4cd7f1948080d103ae8f88.js
+!binary "dGVzdGluZy5qcw==": testing-ee7cea554240ba1c04067026c68a6a06.js
+!binary "dGVzdGluZy9pbmRleC5qcw==": testing-ee7cea554240ba1c04067026c68a6a06.js
+!binary "dXNlcnMuanM=": users-026dd5daa053409d5e4303609e6e1cff.js
+!binary "dXNlcnMvaW5kZXguanM=": users-026dd5daa053409d5e4303609e6e1cff.js
 !binary "YWRtaW4uY3Nz": admin-fb4c1371dbf103543f69c93f2aea9fba.css
 !binary "YWRtaW4vaW5kZXguY3Nz": admin-fb4c1371dbf103543f69c93f2aea9fba.css
 !binary "YWRtaW4vZGFzaGJvYXJkcy5jc3M=": admin/dashboards-1b13569e9620782f423d4cd3ce931750.css

@@ -14,10 +14,30 @@
       <div class="block">
         <div class="data-fluid">
           <%= link_to "Edit", "#", :class => "btn edit-tabular" %>
-          <%= form_for @tabular, :url => update_all_tabulars_path, :html => {:method => :put} do |f| %>
-            <%= nested_tabulars(@user_tabulars.arrange(:order => :created_at), f: f) %>
-            <%= f.submit :class => "update-all-btn-tabular" %>
-          <% end %>
+          <table cellpadding="0" cellspacing="0" width="100%" class="table">
+            <thead>
+              <tr>
+                <th width="50%">
+                  Nama Sumber Data
+                </th>
+                <th width="10%">
+                  Value
+                </th>
+                <th width="10%">
+                  Satuan
+                </th>
+                <th width="25%">
+                  Sumber Data
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= form_for @tabular, :url => update_all_tabulars_path, :html => {:method => :put} do |f| %>
+                <%= nested_tabulars(@user_tabulars.arrange(:order => :created_at), :f => f) %>
+                <%= f.submit :class => "btn update-all-btn-tabular" %>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

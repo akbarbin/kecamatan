@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require global
 //= require plugins/jquery/jquery-1.9.1.min
 //= require plugins/jquery/jquery-ui-1.10.1.custom.min
 //= require plugins/jquery/jquery-migrate-1.1.1.min

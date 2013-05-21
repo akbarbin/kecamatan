@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require global
 //= require plugins/jquery/jquery-1.9.1.min
 //= require plugins/jquery/jquery-ui-1.10.1.custom.min
 //= require plugins/jquery/jquery-migrate-1.1.1.min
@@ -36,13 +37,6 @@ $(document).ready(function(){
   // call data with fancybox;
   addDataWithFancyBox();
   editDataWithFancyBox();
-  $('.field-tabular').hide();
-  $('.update-all-btn-tabular').hide();
-  $('.edit-tabular').click(function(){
-    $('.field-tabular').show();
-    $('.tabular-total').hide();
-    $('.update-all-btn-tabular').show();
-  });
 });
 
 /* Created by [muhamad.akbar@kiranatama.com] at Apr 16 2012,
